@@ -12,21 +12,24 @@
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs: {
+
     nixosConfigurations.futaba = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
+
       modules = [
         ./configuration.nix
+
         home-manager.nixosModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = { inherit inputs; };
 
             users.lia = import ./home.nix;
-
-            extraSpecialArgs = { inherit inputs; };
           };
         }
       ];
     };
+
   };
 }
