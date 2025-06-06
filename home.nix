@@ -7,6 +7,24 @@
     stateVersion = "25.05";
   };
 
+  home.shellAliases = {
+    ns = "sudo nixos-rebuild switch --flake ~/Flakes";
+    nt = "sudo nixos-rebuild test --flake ~/Flakes";
+    nto = "sudo nixos-rebuild test --flake ~/Flakes";
+    rebuild = "ns";
+  };
+
+  home.sessionVariables = {
+    EDITOR = "vim";
+    NIXOS_OZONE_WL = 1;
+  };
+  
+  # Let HM Manage Bash (to make the above bashrc work)
+  programs.bash.enable = true;
+
+  # Pretty Prompt
+  programs.starship.enable = true;
+
   home.packages = with pkgs; [
     
     # Apps
@@ -35,11 +53,6 @@
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-  ]
-  ++ [
-    (pkgs.writeShellScriptBin "rebuild" ''
-      sudo nixos-rebuild switch --flake ~/Flakes
-    '')
   ];
 
   programs.alacritty = {
@@ -254,7 +267,7 @@
       userSettings = {
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
-        "editor.minimap.enabled" = false;
+        "editor.minimap.enabled" = true;
 
         "workbench.colorTheme" = "Atomize";
       };
@@ -287,43 +300,4 @@
     };
   };
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/lia/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    EDITOR = "vim";
-    NIXOS_OZONE_WL = 1;
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-  };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
