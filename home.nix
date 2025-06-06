@@ -19,7 +19,7 @@
     NIXOS_OZONE_WL = 1;
   };
   
-  # Let HM Manage Bash (to make the above bashrc work)
+  # Let HM Manage Shell (to make the above bashrc work)
   programs.bash.enable = true;
 
   # Pretty Prompt
