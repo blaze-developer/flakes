@@ -10,10 +10,12 @@
       ./hardware-configuration.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  
   nixpkgs.overlays = [
     inputs.frc-nix.overlays.default
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
