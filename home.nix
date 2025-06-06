@@ -261,7 +261,11 @@
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
         emroussel.atomize-atom-one-dark-theme
+
+        # Java
         wpilibsuite.vscode-wpilib
+        # vscjava.vscode-java-pack
+        redhat.java
       ];
     };
   };
