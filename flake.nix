@@ -10,7 +10,7 @@
     nixosConfigurations.futaba = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
-        frc-nix
+        frc-nix.nixosModules.default
         ./configuration.nix
       ];
     };

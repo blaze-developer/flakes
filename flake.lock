@@ -18,7 +18,7 @@
         "type": "github"
       }
     },
-    "frc": {
+    "frc-nix": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nix-github-actions": "nix-github-actions",
@@ -41,7 +41,7 @@
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
-          "frc",
+          "frc-nix",
           "nixpkgs"
         ]
       },
@@ -93,7 +93,7 @@
     },
     "root": {
       "inputs": {
-        "frc": "frc",
+        "frc-nix": "frc-nix",
         "nixpkgs": "nixpkgs_2"
       }
     },
