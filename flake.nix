@@ -6,8 +6,8 @@
     frc-nix.url = "github:frc4451/frc-nix";
   };
 
-  outputs = { nixpkgs, ... } @ inputs: {
-    inputs.frc-nix
+  outputs = { nixpkgs, frc-nix, ... } @ inputs: {
+    frc-nix.nixosModules.default
     nixosConfigurations.futaba = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
