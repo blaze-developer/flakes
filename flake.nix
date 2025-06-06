@@ -19,7 +19,7 @@
         home-manager.nixosModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
-            useUserPkgs = true;
+            useUserPackages = true;
 
             users.lia = import ./home.nix;
 
