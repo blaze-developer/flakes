@@ -58,7 +58,15 @@
     fastfetch
     hyfetch
     kitty
+    # TODO: move these to homemanager, i should import homemanager non-standalone.
     advantagescope
+    elastic-dashboard
+    pathplanner
+    roborioteamnumbersetter
+    sysid
+    vscode-wpilib
+    wpical
+    wpilib-utility
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
