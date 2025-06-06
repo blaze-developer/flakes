@@ -3,13 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    frc.url = "github:frc5541/frc-nix";
+    frc.url = "github:frc4451/frc-nix";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, frc }: {
   
     nixosConfigurations.futaba = nixpkgs.lib.nixosSystem {
-      modules = [ ./configuration.nix ];
+      modules = [
+        ./configuration.nix
+      ];
     };
 
   };
