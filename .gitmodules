@@ -1,3 +1,0 @@
-[submodule "frc-nix"]
-	path = frc-nix
-	url = git@github.com:blaze-developer/frc-nix

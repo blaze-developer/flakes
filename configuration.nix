@@ -84,6 +84,11 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
