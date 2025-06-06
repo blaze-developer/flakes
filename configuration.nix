@@ -58,16 +58,18 @@
     fastfetch
     hyfetch
     kitty
-    # TODO: move these to homemanager, i should import homemanager non-standalone.
+
+    # Robotics
     advantagescope
-    elastic-dashboard
     pathplanner
+    elastic-dashboard
+  ]
+  ++ (with pkgs.wpilib; [
+    vscode-wpilib
+    wpilib-utility
     roborioteamnumbersetter
     sysid
-    vscode-wpilib
-    wpical
-    wpilib-utility
-  ];
+  ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
