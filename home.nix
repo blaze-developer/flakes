@@ -268,7 +268,7 @@
     extraConfig = {
       user = {
         name = "blaze-developer";
-        email = "bryce@blazedeveloper.com";
+        email = "bryceblazegaming@gmail.com";
       };
       init.defaultBranch = "main";
     };
