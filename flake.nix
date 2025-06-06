@@ -9,6 +9,7 @@
   outputs = { self, nixpkgs, frc }: {
   
     nixosConfigurations.futaba = nixpkgs.lib.nixosSystem {
+      # specialArgs = [ frc ];
       modules = [
         ./configuration.nix
       ];
