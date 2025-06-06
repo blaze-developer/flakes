@@ -60,18 +60,7 @@
     fastfetch
     hyfetch
     kitty
-
-    # Robotics
-    advantagescope
-    pathplanner
-    elastic-dashboard
-  ]
-  ++ (with pkgs.wpilib; [
-    vscode-wpilib
-    wpilib-utility
-    roborioteamnumbersetter
-    sysid
-  ]);
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
