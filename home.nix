@@ -15,6 +15,9 @@
     spotify
     jetbrains.idea-community
     jdk
+
+    # Robotics Apps
+    advantagescope
     
     # Desktop Packages
     font-awesome
