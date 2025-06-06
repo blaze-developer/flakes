@@ -11,6 +11,10 @@
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nixpkgs.overlays = [
+    inputs.frc-nix.overlays.default
+  ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -54,6 +58,7 @@
     fastfetch
     hyfetch
     kitty
+    advantagescope
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
