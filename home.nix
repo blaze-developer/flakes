@@ -264,9 +264,15 @@
 
         # Java
         wpilibsuite.vscode-wpilib
-        # vscjava.vscode-java-pack
         redhat.java
-      ];
+      ]
+      ++( with pkgs.vscode-extensions.vscjava; [
+        vscode-maven
+        vscode-gradle
+        vscode-java-debug
+        vscode-java-test
+        vscode-java-dependency
+      ]);
     };
   };
 
