@@ -18,6 +18,8 @@
 
     # Robotics Apps
     advantagescope
+    elastic-dashboard
+    pathplanner
     
     # Desktop Packages
     font-awesome
@@ -259,6 +261,7 @@
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
         emroussel.atomize-atom-one-dark-theme
+        wpilibsuite.vscode-wpilib
       ];
     };
   };
