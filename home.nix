@@ -128,13 +128,8 @@
               builtins.genList (i: if lib.mod i 2 == 0 then red else yellow) (n)
             );
           in
-            "bordercolor ${stripe}, xwayland:1"
+            "bordercolor ${red}, xwayland:1"
         )
-      ];
-
-      env = [
-        "EDITOR, vim"
-        "NIXOS_OZONE_WL, 1"
       ];
 
       exec-once = [
