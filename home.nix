@@ -83,6 +83,8 @@
     systemd.variables = ["--all"];
     settings = {
       
+      monitor = ", preferred, auto, 1.25";
+
       general = {
         gaps_in = 5;
         gaps_out = 20;
