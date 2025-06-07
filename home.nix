@@ -170,8 +170,9 @@
         "SUPER SHIFT, S, exec, grimblast copy area"
         ", Print, exec, grimblast copy"
 
-        "SUPER, N, exec, hyprctl hyprsunset temperature 1500"
-        "SUPER, D, exec, hyprctl hyprsunset identity"
+        # Blue light filter
+        "SUPER, N, exec, hyprctl hyprsunset temperature 1500" # night
+        "SUPER, D, exec, hyprctl hyprsunset identity" # day
 
         # Passthroughs
         "CONTROL SHIFT, M, pass, class:vesktop"
