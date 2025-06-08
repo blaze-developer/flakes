@@ -29,7 +29,6 @@
     
     # Apps
     floorp
-    vesktop
     spotify
     jetbrains.idea-community
     jdk
@@ -47,6 +46,7 @@
     grimblast
     wev
     hyprsunset
+    swww
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -83,7 +83,7 @@
     systemd.variables = ["--all"];
     settings = {
       
-      monitor = ", preferred, auto, 1.25";
+      monitor = ", preferred, auto, 1.2";
 
       general = {
         gaps_in = 5;
@@ -192,13 +192,16 @@
 
   programs.wofi.enable = true;
 
+  services.swww.enable = false;
+
   programs.waybar = {
     enable = true;
+
     settings.mainBar = {
       layer = "top";
       position = "top";
       modules-left = [
-        "hyprland/workspaces"
+        "hyprland/window"
       ];
       modules-right = [
         "pulseaudio"
@@ -206,16 +209,17 @@
         "cpu"
         "memory"
         "battery"
+        "clock"
         "tray"
       ];
       modules-center = [
-        "clock"
+        "hyprland/workspaces"
       ];
       
       tray.spacing = 10;
       
       cpu = {
-        format = "{usage}%";
+        format = "{usage}% ";
         tooltip = false;
       };
 
@@ -255,6 +259,25 @@
         };
       };
     };
+
+    # style = ''
+      
+    # '';
+  };
+
+  programs.vesktop = {
+    enable = true;
+    # vencord.settings = {
+    #   autoUpdate = false;
+    #   autoUpdateNotification = false;
+    #   notifyAboutUpdates = false;
+    #   useQuickCSS = true;
+    #   cloud = {
+    #     authenticated = false;
+    #     url = "https://api.vencord.dev/";
+    #     settingsSync = true;
+    #   };
+    # };
   };
 
   programs.vscode = {
