@@ -52,7 +52,7 @@
   
   # PROGRAMS
 
-  programs.hyprland.enable = true;
+  programs.hyprland.enable = true; # Installs system-wide required stuff for hyprland to work.
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -60,6 +60,7 @@
     fastfetch
     hyfetch
     kitty
+    btop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
