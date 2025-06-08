@@ -10,6 +10,12 @@
       ./hardware-configuration.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "monthly";
+    options = "--delete-older-than 30d";
+  };
   
   nixpkgs.overlays = [
     inputs.frc-nix.overlays.default
@@ -77,7 +83,7 @@
   services.openssh.enable = true;
 
   services.tailscale = {
-    enable = true;
+    enable = false;
     useRoutingFeatures = "client";
   };
 

@@ -39,7 +39,7 @@
     pathplanner
     
     # Desktop Packages
-    font-awesome
+    nerd-fonts.fira-code
     brightnessctl
     playerctl
     wl-clipboard
