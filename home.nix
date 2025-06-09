@@ -12,6 +12,7 @@
     nt = "sudo nixos-rebuild test --flake ~/Flakes";
     nto = "sudo nixos-rebuild test --flake ~/Flakes";
     rebuild = "ns";
+    nya = "nyancat";
   };
 
   home.sessionVariables = {
@@ -30,8 +31,13 @@
     # Apps
     floorp
     spotify
-    jetbrains.idea-community
     jdk
+
+    (jetbrains.idea-community-bin.override {
+      vmopts = ''
+        -Dawt.toolkit.name=WLToolkit
+      '';
+    })
 
     # Robotics Apps
     advantagescope
@@ -192,7 +198,7 @@
 
   programs.wofi.enable = true;
 
-  services.swww.enable = false;
+  services.swww.enable = true;
 
   programs.waybar = {
     enable = true;

@@ -65,8 +65,11 @@
     wget
     fastfetch
     hyfetch
+    nyancat
+    unimatrix
     kitty
     btop
+    killall
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
