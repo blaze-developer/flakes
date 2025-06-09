@@ -19,6 +19,9 @@
     EDITOR = "vim";
     NIXOS_OZONE_WL = 1;
   };
+
+  # Pywal File (i should probably modularize and i know, ill do it soon lol)
+  home.file.".config/wal/templates/colors-hyprland.conf".source = ./templates/colors-hyprland.conf;
   
   # Let HM Manage Shell (to make the above bashrc work)
   programs.bash.enable = true;
@@ -53,6 +56,7 @@
     wev
     hyprsunset
     swww
+    pywal
 
     # Cli Apps
     nyancat
@@ -94,6 +98,8 @@
     enable = true;
     systemd.variables = ["--all"];
     settings = {
+
+      source = "~/.cache/wal/colors-hyprland.conf";
       
       monitor = ", preferred, auto, 1.2";
 
@@ -124,9 +130,13 @@
         blur = {
           enabled = true;
           size = 3;
-                passes = 1;
+          passes = 1;
           vibrancy = 0.1696;
         };
+      };
+
+      misc = {
+        disable_hyprland_logo = true;
       };
 
       windowrule = [
