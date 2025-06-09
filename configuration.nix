@@ -65,8 +65,6 @@
     wget
     fastfetch
     hyfetch
-    nyancat
-    unimatrix
     kitty
     btop
     killall
