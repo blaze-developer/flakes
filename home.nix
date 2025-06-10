@@ -56,7 +56,6 @@
     wev
     hyprsunset
     swww
-    pywal
 
     # Cli Apps
     nyancat
@@ -178,6 +177,7 @@
         "SUPER, M, exit,"
         "SUPER, B, exec, floorp"
         # "SUPER, P, psuedo,"
+        "SUPER, F, togglefloating"
         "SUPER, J, togglesplit,"
         
         "SUPER, left, movefocus, l"
@@ -215,6 +215,11 @@
   programs.wofi.enable = true;
 
   services.swww.enable = true;
+  programs.pywal.enable = true;
+
+  programs.bash.initExtra = ''
+    (cat ~/.cache/wal/sequences &)
+  '';
 
   programs.waybar = {
     enable = true;
