@@ -320,7 +320,7 @@
         "workbench.colorTheme" = "Atomize";
       };
       extensions = with pkgs.vscode-extensions; [
-        bbenoist.nix
+        jnoortheen.nix-ide
         emroussel.atomize-atom-one-dark-theme
 
         # Java
