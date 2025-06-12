@@ -55,7 +55,6 @@
     grimblast
     wev
     hyprsunset
-    swww
     iio-hyprland
 
     # Cli Apps
