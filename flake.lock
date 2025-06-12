@@ -169,7 +169,24 @@
         "frc-nix": "frc-nix",
         "home-manager": "home-manager",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "stable": "stable"
+      }
+    },
+    "stable": {
+      "locked": {
+        "lastModified": 1749494155,
+        "narHash": "sha256-FG4DEYBpROupu758beabUk9lhrblSf5hnv84v1TLqMc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "88331c17ba434359491e8d5889cce872464052c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "systems": {

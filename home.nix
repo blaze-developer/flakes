@@ -1,5 +1,8 @@
 { config, pkgs, lib, inputs, ... }:
 
+let
+  stable = inputs.stable.legacyPackages."x86_64-linux";
+in
 {
   home = {
     username = "lia";
@@ -215,7 +218,11 @@
 
   programs.wofi.enable = true;
 
-  services.swww.enable = true;
+  services.swww = {
+    enable = true;
+    package = stable.swww;
+  };
+
   programs.pywal.enable = true;
 
   programs.bash.initExtra = ''

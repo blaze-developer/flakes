@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgsold.url = "github:nixos/nixpkgs/nixos-25.05";
+    stable.url = "github:nixos/nixpkgs/nixos-25.05";
     frc-nix.url = "github:frc4451/frc-nix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
