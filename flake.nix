@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     frc-nix.url = "github:frc4451/frc-nix";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     home-manager = {
       url = "github:nix-community/home-manager";

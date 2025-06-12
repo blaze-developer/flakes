@@ -321,20 +321,18 @@
 
         "workbench.colorTheme" = "Atomize";
       };
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
         jnoortheen.nix-ide
-        emroussel.atomize-atom-one-dark-theme
+        dlasagno.wal-theme
 
         # Java
         wpilibsuite.vscode-wpilib
         redhat.java
-      ]
-      ++( with pkgs.vscode-extensions.vscjava; [
-        vscode-maven
-        vscode-gradle
-        vscode-java-debug
-        vscode-java-test
-        vscode-java-dependency
+        vscjava.vscode-maven
+        vscjava.vscode-gradle
+        vscjava.vscode-java-debug
+        vscjava.vscode-java-test
+        vscjava.vscode-java-dependency
       ]);
     };
   };
