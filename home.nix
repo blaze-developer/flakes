@@ -333,7 +333,7 @@
         vscjava.vscode-java-debug
         vscjava.vscode-java-test
         vscjava.vscode-java-dependency
-      ]);
+      ];
     };
   };
 
