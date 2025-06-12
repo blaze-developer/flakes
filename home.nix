@@ -319,11 +319,11 @@
         "extensions.autoUpdate" = false;
         "editor.minimap.enabled" = true;
 
-        "workbench.colorTheme" = "Atomize";
+        "workbench.colorTheme" = "Wal";
       };
       extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
         jnoortheen.nix-ide
-        dlasagno.wal-theme
+        # dlasagno.wal-theme (must install imperatively for it to work :< )
 
         # Java
         wpilibsuite.vscode-wpilib
