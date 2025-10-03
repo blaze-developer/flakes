@@ -25,6 +25,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.android_sdk.accept_license = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -63,6 +65,11 @@
   programs.hyprland.enable = true; # Installs system-wide required stuff for hyprland to work.
 
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    libglvnd
+    xorg.libX11
+    glib
+  ];
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -73,7 +80,13 @@
     btop
     killall
     jq
+    appimage-run
   ];
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

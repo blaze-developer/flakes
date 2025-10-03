@@ -35,9 +35,10 @@ in
   home.packages = with pkgs; [
     
     # Apps
-    floorp
+    floorp-bin
     spotify
     jdk
+    nodejs_24
 
     (jetbrains.idea-community-bin.override {
       vmopts = ''
@@ -45,10 +46,13 @@ in
       '';
     })
 
+    android-studio
+    android-tools
+
     # Robotics Apps
     advantagescope
     elastic-dashboard
-    pathplanner
+    # pathplanner
     
     # Desktop Packages
     nerd-fonts.fira-code
@@ -59,12 +63,14 @@ in
     wev
     hyprsunset
     iio-hyprland
+    pywalfox-native
 
     # Cli Apps
     nyancat
     unimatrix
     cava
     ani-cli
+    blahaj
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -176,7 +182,7 @@ in
       bind = [
 	# Navigation
         "SUPER, RETURN, exec, alacritty"
-        "SUPER, SPACE, exec, wofi --show drun"
+        "SUPER, SPACE, exec, killall &  wofi --show drun"
         "SUPER, C, killactive,"
         "SUPER, M, exit,"
         "SUPER, B, exec, floorp"
@@ -332,14 +338,15 @@ in
         # dlasagno.wal-theme (must install imperatively for it to work :< )
 
         # Java
-        wpilibsuite.vscode-wpilib
         redhat.java
         vscjava.vscode-maven
         vscjava.vscode-gradle
         vscjava.vscode-java-debug
         vscjava.vscode-java-test
         vscjava.vscode-java-dependency
-      ];
+      ] ++ (with pkgs.vscode-extensions; [
+        wpilibsuite.vscode-wpilib
+      ]);
     };
   };
 
