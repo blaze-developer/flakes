@@ -32,6 +32,14 @@ in
   # Pretty Prompt
   programs.starship.enable = true;
 
+  programs.hyfetch = {
+    enable = true;
+  };
+
+  programs.fastfetch = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     
     # Apps
@@ -39,20 +47,30 @@ in
     spotify
     jdk
     nodejs_24
+    emscripten
+    steam
 
-    (jetbrains.idea-community-bin.override {
-      vmopts = ''
-        -Dawt.toolkit.name=WLToolkit
-      '';
-    })
+    # (jetbrains.idea-oss.override {
+    #   vmopts = ''
+    #     -Dawt.toolkit.name=WLToolkit
+    #   '';
+    # })
+
+    unityhub
+    jetbrains.rider
+
+    orca-slicer
 
     android-studio
     android-tools
 
+    okteta
+    
+
     # Robotics Apps
     advantagescope
     elastic-dashboard
-    # pathplanner
+    pathplanner
     
     # Desktop Packages
     nerd-fonts.fira-code
@@ -71,6 +89,10 @@ in
     cava
     ani-cli
     blahaj
+    yt-dlp
+    nixd
+    nixfmt
+    nixos-generators
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -78,6 +100,10 @@ in
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
   ];
+
+  programs.kitty = {
+    enable = true;
+  };
 
   programs.alacritty = {
     enable = true;
@@ -158,7 +184,7 @@ in
               builtins.genList (i: if lib.mod i 2 == 0 then red else yellow) (n)
             );
           in
-            "bordercolor ${red}, xwayland:1"
+            "border_color ${red}, match:xwayland 1"
         )
       ];
 
@@ -332,8 +358,11 @@ in
         "editor.minimap.enabled" = true;
 
         "workbench.colorTheme" = "Wal";
+        
+        "nix.enableLanguageServer" = true;
+	"nix.serverPath" = "nixd";
       };
-      extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
+      extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
         # dlasagno.wal-theme (must install imperatively for it to work :< )
 
@@ -352,12 +381,13 @@ in
 
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       user = {
         name = "blaze-developer";
         email = "bryceblazegaming@gmail.com";
       };
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
   };
 

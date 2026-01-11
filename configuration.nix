@@ -69,18 +69,35 @@
     libglvnd
     xorg.libX11
     glib
+    nspr
+    nss_latest
+    dbus
+    atk
+    cups
+    cairo
+    gtk3
+    pango
+    xorg.libXcomposite
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXrandr
+    libgbm
+    expat
+    xorg.libxcb
+    libxkbcommon
+    alsa-lib
   ];
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    fastfetch
-    hyfetch
     kitty
     btop
     killall
     jq
     appimage-run
+    mesa
   ];
 
   programs.appimage = {
@@ -99,6 +116,10 @@
   # SERVICES
 
   hardware.sensor.iio.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
