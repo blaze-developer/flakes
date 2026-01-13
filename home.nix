@@ -11,9 +11,9 @@ in
   };
 
   home.shellAliases = {
-    ns = "sudo nixos-rebuild switch --flake ~/Flakes";
-    nt = "sudo nixos-rebuild test --flake ~/Flakes";
-    nto = "sudo nixos-rebuild test --flake ~/Flakes";
+    ns = "sudo nixos-rebuild switch --flake ~/flakes";
+    nt = "sudo nixos-rebuild test --flake ~/flakes";
+    nto = "sudo nixos-rebuild test --flake ~/flakes";
     rebuild = "ns";
     nya = "nyancat";
   };
@@ -175,17 +175,17 @@ in
 
       windowrule = [
         # XWayland window warning!
-        (
-          let
-            red = "rgb(240, 60, 40)";
-            yellow = "rgb(248, 218, 68)";
-            n = 3; # number of stripes
-            stripe = builtins.concatStringsSep " " (
-              builtins.genList (i: if lib.mod i 2 == 0 then red else yellow) (n)
-            );
-          in
-            "border_color ${red}, match:xwayland 1"
-        )
+        # (
+        #   let
+        #     red = "rgb(240, 60, 40)";
+        #     yellow = "rgb(248, 218, 68)";
+        #     n = 3; # number of stripes
+        #     stripe = builtins.concatStringsSep " " (
+        #       builtins.genList (i: if lib.mod i 2 == 0 then red else yellow) (n)
+        #     );
+        #   in
+        #     "border_color ${red}, match:xwayland true"
+        # )
       ];
 
       exec-once = [
