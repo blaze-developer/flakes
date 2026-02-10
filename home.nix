@@ -16,11 +16,13 @@ in
     nto = "sudo nixos-rebuild test --flake ~/flakes";
     rebuild = "ns";
     nya = "nyancat";
+    hypr = "start-hyprland";
   };
 
   home.sessionVariables = {
     EDITOR = "vim";
     NIXOS_OZONE_WL = 1;
+    NODE_OPTIONS="--max-old-space-size=16384";
   };
 
   # Pywal File (i should probably modularize and i know, ill do it soon lol)
@@ -46,8 +48,8 @@ in
     floorp-bin
     spotify
     jdk
-    nodejs_24
-    emscripten
+    python3
+    nodejs_25
     steam
 
     # (jetbrains.idea-oss.override {
@@ -71,6 +73,9 @@ in
     advantagescope
     elastic-dashboard
     pathplanner
+    wpilib.roborioteamnumbersetter
+    wpilib.sysid
+    wpilib.wpical
     
     # Desktop Packages
     nerd-fonts.fira-code
@@ -81,7 +86,10 @@ in
     wev
     hyprsunset
     iio-hyprland
+    xdg-desktop-portal-hyprland
     pywalfox-native
+    gsettings-desktop-schemas
+    glib
 
     # Cli Apps
     nyancat
@@ -93,13 +101,17 @@ in
     nixd
     nixfmt
     nixos-generators
+    gh
+    direnv
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-  ];
+  ] ++ (with stable; [
+    emscripten
+  ]);
 
   programs.kitty = {
     enable = true;
@@ -223,7 +235,7 @@ in
 
         # FKeys
         "SUPER SHIFT, S, exec, grimblast copy area"
-        ", Print, exec, grimblast copy"
+        ", Print, exec, grimblast copy active"
 
         # Blue light filter
         "SUPER, N, exec, hyprctl hyprsunset temperature 1500" # night
@@ -334,17 +346,17 @@ in
 
   programs.vesktop = {
     enable = true;
-    # vencord.settings = {
+    vencord.settings = {
     #   autoUpdate = false;
     #   autoUpdateNotification = false;
     #   notifyAboutUpdates = false;
     #   useQuickCSS = true;
-    #   cloud = {
-    #     authenticated = false;
-    #     url = "https://api.vencord.dev/";
-    #     settingsSync = true;
-    #   };
-    # };
+      cloud = {
+        authenticated = true;
+        url = "https://api.vencord.dev/";
+        settingsSync = true;
+      };
+    };
   };
 
   programs.vscode = {
@@ -361,10 +373,15 @@ in
         
         "nix.enableLanguageServer" = true;
 	"nix.serverPath" = "nixd";
+
+        "direnv.restart.automatic" = true;
+
+        "redhat.telemetry.enabled" = false;
       };
       extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
         # dlasagno.wal-theme (must install imperatively for it to work :< )
+        mkhl.direnv
 
         # Java
         redhat.java
@@ -373,6 +390,7 @@ in
         vscjava.vscode-java-debug
         vscjava.vscode-java-test
         vscjava.vscode-java-dependency
+        
       ] ++ (with pkgs.vscode-extensions; [
         wpilibsuite.vscode-wpilib
       ]);

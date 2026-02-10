@@ -36,7 +36,7 @@
     hostName = "futaba";
     networkmanager.enable = true;
     firewall = {
-      allowedTCPPorts = [];
+      allowedTCPPorts = [ 56328 ];
       allowedUDPPorts = [];
       enable = true;
     };
@@ -67,7 +67,6 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     libglvnd
-    xorg.libX11
     glib
     nspr
     nss_latest
@@ -77,14 +76,8 @@
     cairo
     gtk3
     pango
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXrandr
     libgbm
     expat
-    xorg.libxcb
     libxkbcommon
     alsa-lib
   ];
@@ -98,6 +91,7 @@
     jq
     appimage-run
     mesa
+    ffmpeg
   ];
 
   programs.appimage = {
