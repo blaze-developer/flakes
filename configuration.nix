@@ -80,6 +80,14 @@
     expat
     libxkbcommon
     alsa-lib
+    libGL
+    libx11
+    libxrandr
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxcb
   ];
 
   environment.systemPackages = with pkgs; [

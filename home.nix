@@ -63,8 +63,18 @@ in
 
     orca-slicer
 
-    android-studio
+    # android-studio
     android-tools
+
+    (pkgs.symlinkJoin {
+      name = "android-studio-wayland";
+      paths = [ pkgs.android-studio ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/android-studio \
+          --add-flags "-Dawt.toolkit.name=WLToolkit"
+      '';
+    })
 
     okteta
     
@@ -153,8 +163,8 @@ in
         gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "$color6 $color7 45deg";
+        "col.inactive_border" = "$background";
         resize_on_border = true;
         allow_tearing = false;
         layout = "dwindle";
