@@ -166,8 +166,6 @@ in
 
       source = "~/.cache/wal/colors-hyprland.conf";
 
-      monitor = "eDP-1, preferred, auto, 2.0";
-
       general = {
         gaps_in = 5;
         gaps_out = 20;

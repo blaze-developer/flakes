@@ -13,6 +13,8 @@
     ./hardware-configuration.nix
   ];
 
+  networking.hostName =  "joker";
+
   # May save my life? (idk its what they said on nixos-hardware)
   services.thermald.enable = true;
 

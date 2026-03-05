@@ -12,6 +12,8 @@
     ./hardware-configuration.nix
   ];
 
+  networking.hostName = "futaba";
+
   # Gyroscope tilting
   hardware.sensor.iio.enable = true;
 

@@ -33,7 +33,7 @@
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
 
-                users.lia = import ./home.nix;
+                users.lia = import ./hosts/joker/home.nix;
               };
             }
           ];
@@ -53,7 +53,7 @@
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
 
-                users.lia = import ./home.nix;
+                users.lia = import ./hosts/joker/home.nix;
               };
             }
           ];
