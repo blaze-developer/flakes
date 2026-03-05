@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -11,7 +12,6 @@ in
   home = {
     username = "lia";
     homeDirectory = "/home/lia";
-    stateVersion = "25.05";
   };
 
   home.shellAliases = {
@@ -100,7 +100,6 @@ in
       grimblast
       wev
       hyprsunset
-      iio-hyprland
       xdg-desktop-portal-hyprland
       pywalfox-native
       gsettings-desktop-schemas
@@ -164,6 +163,8 @@ in
     systemd.variables = [ "--all" ];
     settings = {
 
+      monitor = lib.mkDefault ", preferred, auto, 1.0";
+
       source = "~/.cache/wal/colors-hyprland.conf";
 
       general = {
@@ -220,7 +221,6 @@ in
       exec-once = [
         "waybar"
         "hyprsunset"
-        "iio-hyprland"
       ];
 
       # Repeatable Bindings on Hold
