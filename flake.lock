@@ -1,9 +1,33 @@
 {
   "nodes": {
+    "firefox-addons": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "pkgs/firefox-addons",
+        "lastModified": 1772683386,
+        "narHash": "sha256-uiYArwJv6pBDuWgmbAJx2+TYFrufn2MdLio5nn0sdRQ=",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "rev": "a992662e5a78c82423a1a58d28ad00d49548ff80",
+        "type": "gitlab"
+      },
+      "original": {
+        "dir": "pkgs/firefox-addons",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "type": "gitlab"
+      }
+    },
     "frc-nix": {
       "inputs": {
         "nix-github-actions": "nix-github-actions",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1772466293,
@@ -62,7 +86,7 @@
     },
     "nix-vscode-extensions": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1772592001,
@@ -80,22 +104,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1772198003,
-        "narHash": "sha256-I45esRSssFtJ8p/gLHUZ1OUaaTaVLluNkABkk6arQwE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "dd9b079222d43e1943b6ebd802f04fd959dc8e61",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1766025857,
         "narHash": "sha256-Lav5jJazCW4mdg1iHcROpuXqmM94BWJvabLFWaJVJp0=",
         "owner": "nixos",
@@ -110,7 +118,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1772542754,
         "narHash": "sha256-WGV2hy+VIeQsYXpsLjdr4GvHv5eECMISX1zKLTedhdg=",
@@ -128,10 +136,11 @@
     },
     "root": {
       "inputs": {
+        "firefox-addons": "firefox-addons",
         "frc-nix": "frc-nix",
         "home-manager": "home-manager",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "stable": "stable"
       }
     },

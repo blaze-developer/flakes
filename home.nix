@@ -50,8 +50,6 @@ in
     with pkgs;
     [
 
-      # Apps
-      floorp-bin
       spotify
       jdk
       python3
@@ -234,6 +232,12 @@ in
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ];
 
+      # Bindings always available
+      bindl = [
+        ", XF86AudioPlay, exec, playerctl play-pause"
+      ];
+
+      # Bindings only available when unlocked
       bind = [
         # Navigation
         "SUPER, RETURN, exec, alacritty"
@@ -373,6 +377,16 @@ in
     # style = ''
 
     # '';
+  };
+
+  programs.floorp = {
+    enable = true;
+
+    profiles.default = {
+      extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
+        ublock-origin
+      ];
+    };
   };
 
   programs.vesktop = {
