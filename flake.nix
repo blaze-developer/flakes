@@ -13,25 +13,53 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs: {
+  outputs =
+    { nixpkgs, home-manager, ... }@inputs:
+    {
 
-    nixosConfigurations.futaba = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      nixosConfigurations = {
 
-      modules = [
-        ./configuration.nix
+        # My Dell XPS Laptop
+        joker = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
 
-        home-manager.nixosModules.home-manager {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./common.nix
+            ./hosts/joker/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
 
-            users.lia = import ./home.nix;
-          };
-        }
-      ];
+                users.lia = import ./home.nix;
+              };
+            }
+          ];
+        };
+
+        # My Lenovo Laptop (old)
+        futaba = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+
+          modules = [
+            ./common.nix
+            ./hosts/futaba/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+
+                users.lia = import ./home.nix;
+              };
+            }
+          ];
+        };
+
+      };
+
     };
-
-  };
 }

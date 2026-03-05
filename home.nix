@@ -1,4 +1,8 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   stable = inputs.stable.legacyPackages."x86_64-linux";
@@ -22,12 +26,12 @@ in
   home.sessionVariables = {
     EDITOR = "vim";
     NIXOS_OZONE_WL = 1;
-    NODE_OPTIONS="--max-old-space-size=16384";
+    NODE_OPTIONS = "--max-old-space-size=16384";
   };
 
   # Pywal File (i should probably modularize and i know, ill do it soon lol)
   home.file.".config/wal/templates/colors-hyprland.conf".source = ./templates/colors-hyprland.conf;
-  
+
   # Let HM Manage Shell (to make the above bashrc work)
   programs.bash.enable = true;
 
@@ -42,86 +46,88 @@ in
     enable = true;
   };
 
-  home.packages = with pkgs; [
-    
-    # Apps
-    floorp-bin
-    spotify
-    jdk
-    python3
-    nodejs_25
-    steam
+  home.packages =
+    with pkgs;
+    [
 
-    # (jetbrains.idea-oss.override {
-    #   vmopts = ''
-    #     -Dawt.toolkit.name=WLToolkit
-    #   '';
-    # })
+      # Apps
+      floorp-bin
+      spotify
+      jdk
+      python3
+      nodejs_25
+      steam
 
-    unityhub
-    jetbrains.rider
+      # (jetbrains.idea-oss.override {
+      #   vmopts = ''
+      #     -Dawt.toolkit.name=WLToolkit
+      #   '';
+      # })
 
-    orca-slicer
+      unityhub
+      jetbrains.rider
 
-    # android-studio
-    android-tools
+      orca-slicer
 
-    (pkgs.symlinkJoin {
-      name = "android-studio-wayland";
-      paths = [ pkgs.android-studio ];
-      buildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/android-studio \
-          --add-flags "-Dawt.toolkit.name=WLToolkit"
-      '';
-    })
+      # android-studio
+      android-tools
 
-    okteta
-    
+      (pkgs.symlinkJoin {
+        name = "android-studio-wayland";
+        paths = [ pkgs.android-studio ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/android-studio \
+            --add-flags "-Dawt.toolkit.name=WLToolkit"
+        '';
+      })
 
-    # Robotics Apps
-    advantagescope
-    elastic-dashboard
-    pathplanner
-    wpilib.roborioteamnumbersetter
-    wpilib.sysid
-    wpilib.wpical
-    
-    # Desktop Packages
-    nerd-fonts.fira-code
-    brightnessctl
-    playerctl
-    wl-clipboard
-    grimblast
-    wev
-    hyprsunset
-    iio-hyprland
-    xdg-desktop-portal-hyprland
-    pywalfox-native
-    gsettings-desktop-schemas
-    glib
+      okteta
 
-    # Cli Apps
-    nyancat
-    unimatrix
-    cava
-    ani-cli
-    blahaj
-    yt-dlp
-    nixd
-    nixfmt
-    nixos-generators
-    gh
-    direnv
+      # Robotics Apps
+      advantagescope
+      elastic-dashboard
+      pathplanner
+      wpilib.roborioteamnumbersetter
+      wpilib.sysid
+      wpilib.wpical
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-  ] ++ (with stable; [
-    emscripten
-  ]);
+      # Desktop Packages
+      nerd-fonts.fira-code
+      brightnessctl
+      playerctl
+      wl-clipboard
+      grimblast
+      wev
+      hyprsunset
+      iio-hyprland
+      xdg-desktop-portal-hyprland
+      pywalfox-native
+      gsettings-desktop-schemas
+      glib
+
+      # Cli Apps
+      nyancat
+      unimatrix
+      cava
+      ani-cli
+      blahaj
+      yt-dlp
+      nixd
+      nixfmt
+      nixos-generators
+      gh
+      direnv
+
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    ]
+    ++ (with stable; [
+      emscripten
+    ]);
 
   programs.kitty = {
     enable = true;
@@ -131,7 +137,10 @@ in
     enable = true;
     settings = {
       window = {
-        padding = { x = 10; y = 10; };
+        padding = {
+          x = 10;
+          y = 10;
+        };
         opacity = 0.65;
         blur = true;
       };
@@ -152,12 +161,12 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.variables = ["--all"];
+    systemd.variables = [ "--all" ];
     settings = {
 
       source = "~/.cache/wal/colors-hyprland.conf";
-      
-      monitor = "eDP-1, preferred, auto, 1.2";
+
+      monitor = "eDP-1, preferred, auto, 2.0";
 
       general = {
         gaps_in = 5;
@@ -220,7 +229,7 @@ in
       bindel = [
         ", XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
         ", XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
-  
+
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
@@ -228,7 +237,7 @@ in
       ];
 
       bind = [
-	# Navigation
+        # Navigation
         "SUPER, RETURN, exec, alacritty"
         "SUPER, SPACE, exec, killall &  wofi --show drun"
         "SUPER, C, killactive,"
@@ -237,7 +246,7 @@ in
         # "SUPER, P, psuedo,"
         "SUPER, F, togglefloating"
         "SUPER, J, togglesplit,"
-        
+
         "SUPER, left, movefocus, l"
         "SUPER, right, movefocus, r"
         "SUPER, up, movefocus, u"
@@ -258,14 +267,18 @@ in
       ++ (
         # workspaces
         # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-        builtins.concatLists (builtins.genList (i:
-            let ws = i + 1;
-            in [
+        builtins.concatLists (
+          builtins.genList (
+            i:
+            let
+              ws = i + 1;
+            in
+            [
               "SUPER, code:1${toString i}, workspace, ${toString ws}"
               "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
             ]
-          )
-          9)
+          ) 9
+        )
       );
     };
   };
@@ -304,9 +317,9 @@ in
       modules-center = [
         "hyprland/workspaces"
       ];
-      
+
       tray.spacing = 10;
-      
+
       cpu = {
         format = "{usage}% ";
         tooltip = false;
@@ -316,7 +329,13 @@ in
 
       battery = {
         format = "{capacity}% {icon}";
-        format-icons = ["" "" "" "" ""];
+        format-icons = [
+          ""
+          ""
+          ""
+          ""
+          ""
+        ];
       };
 
       clock.format-alt = "{:%a, %d. %b  %H:%M}";
@@ -338,41 +357,39 @@ in
         format-source = "{volume}% ";
         format-source-muted = "";
         format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
+          headphone = "";
+          hands-free = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = [
+            ""
+            ""
+            ""
+          ];
         };
       };
     };
 
     # style = ''
-      
+
     # '';
   };
 
   programs.vesktop = {
     enable = true;
     vencord.settings = {
-    #   autoUpdate = false;
-    #   autoUpdateNotification = false;
-    #   notifyAboutUpdates = false;
-    #   useQuickCSS = true;
-      cloud = {
-        authenticated = true;
-        url = "https://api.vencord.dev/";
-        settingsSync = true;
-      };
+      autoUpdate = false;
+      autoUpdateNotification = false;
+      notifyAboutUpdates = false;
     };
   };
 
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    
+
     profiles.default = {
       userSettings = {
         "extensions.autoCheckUpdates" = false;
@@ -380,30 +397,35 @@ in
         "editor.minimap.enabled" = true;
 
         "workbench.colorTheme" = "Wal";
-        
+
         "nix.enableLanguageServer" = true;
-	"nix.serverPath" = "nixd";
+        "nix.serverPath" = "nixd";
 
         "direnv.restart.automatic" = true;
 
         "redhat.telemetry.enabled" = false;
-      };
-      extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-        # dlasagno.wal-theme (must install imperatively for it to work :< )
-        mkhl.direnv
 
-        # Java
-        redhat.java
-        vscjava.vscode-maven
-        vscjava.vscode-gradle
-        vscjava.vscode-java-debug
-        vscjava.vscode-java-test
-        vscjava.vscode-java-dependency
-        
-      ] ++ (with pkgs.vscode-extensions; [
-        wpilibsuite.vscode-wpilib
-      ]);
+        "files.associations" = {
+          "*.json" = "jsonc";
+        };
+      };
+      extensions =
+        with pkgs.vscode-extensions;
+        [
+          jnoortheen.nix-ide
+          # dlasagno.wal-theme
+          mkhl.direnv
+
+          # Java
+          redhat.java
+          vscjava.vscode-maven
+          vscjava.vscode-gradle
+          vscjava.vscode-java-debug
+          vscjava.vscode-java-test
+          vscjava.vscode-java-dependency
+          wpilibsuite.vscode-wpilib
+
+        ];
     };
   };
 
