@@ -54,7 +54,6 @@ in
       jdk
       python3
       nodejs_25
-      steam
 
       # (jetbrains.idea-oss.override {
       #   vmopts = ''
