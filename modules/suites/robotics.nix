@@ -7,22 +7,27 @@ in
 {
   options.suites.robotics.enable = lib.mkEnableOption "Wpilib and Robotics Software Suite";
 
-  config = lib.mkIf cfg.enable {
+  config = {
+
     nixpkgs.overlays = [ inputs.frc-nix.overlays.default ];
     
-    environment.systemPackages = with pkgs; [
-      advantagescope
-      elastic-dashboard
-      pathplanner
-      wpilib.roborioteamnumbersetter
-      wpilib.sysid
-      wpilib.wpical
-      direnv
-    ]++ (with stable; [
-      emscripten
-    ]);
+    environment = lib.mkIf cfg.enable {
+      systemPackages = with pkgs; [
+        advantagescope
+        elastic-dashboard
+        pathplanner
+        wpilib.roborioteamnumbersetter
+        wpilib.sysid
+        wpilib.wpical
+        direnv
+      ]++ (with stable; [
+        emscripten
+      ]);
+    };
 
     # AdvantageScope XR
-    networking.firewall.allowedTCPPorts = [ 56328 ];
+    networking = lib.mkIf cfg.enable {
+      firewall.allowedTCPPorts = [ 56328 ];
+    };
   };
 }
