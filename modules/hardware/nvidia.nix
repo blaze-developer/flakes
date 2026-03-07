@@ -5,13 +5,15 @@ in
 {
   options.drivers.nvidia = {
     enable = lib.mkEnableOption "nvidia drivers";
-    hybrid = {
-      enable = lib.mkEnableOption "optimus prime gpu hybridization";
-    };
+    # hybrid = {
+    #   enable = lib.mkEnableOption "optimus prime gpu hybridization";
+    # };
   };
 
   
   config = lib.mkIf cfg.enable {
+    services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+
     hardware.nvidia = {
 
       # Modesetting is required.
@@ -39,10 +41,10 @@ in
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
 
-    services.xserver.videoDrivers = [ "nvidia" ] ++ lib.mkIf cfg.hybrid "modesetting";
+    # services.xserver.videoDrivers = lib.mkIf cfg.hybrid.enable [ "modesetting" ];
 
     # THESE BUS ID'S SHOULD BE CONFIGURABLE
-    hardware.nvidia.prime = lib.mkId cfg.hybrid {
+    hardware.nvidia.prime = {
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
 

@@ -34,7 +34,6 @@
           specialArgs = { inherit inputs; };
 
           modules = [
-            ./common.nix
             ./hosts/joker/configuration.nix
             ./modules
             home-manager.nixosModules.home-manager
@@ -55,7 +54,6 @@
           specialArgs = { inherit inputs; };
 
           modules = [
-            ./common.nix
             ./hosts/futaba/configuration.nix
             ./modules
             home-manager.nixosModules.home-manager
