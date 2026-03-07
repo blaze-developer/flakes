@@ -97,6 +97,7 @@
     appimage-run
     mesa
     ffmpeg
+    steam
   ];
 
   programs.appimage = {
@@ -132,6 +133,11 @@
     nssmdns4 = true;
     openFirewall = true;
   };
+
+  # programs.mpv = {
+  #   enable = true;
+  #   package = pkgs.mpv.override { waylandSupport = true; };
+  # };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

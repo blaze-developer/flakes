@@ -235,6 +235,7 @@ in
         "SUPER, B, exec, floorp"
         # "SUPER, P, psuedo,"
         "SUPER, F, togglefloating"
+        "SUPER SHIFT, F, fullscreen"
         "SUPER, J, togglesplit,"
 
         "SUPER, left, movefocus, l"
@@ -438,6 +439,15 @@ in
       };
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
+    };
+  };
+
+  programs.mpv = {
+    enable = true;
+    config = {
+      hwdec = "auto";
+      vo = "gpu-next"; # Better Wayland support
+      gpu-context = "wayland";
     };
   };
 
