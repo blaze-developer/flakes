@@ -63,6 +63,7 @@ in
 
       unityhub
       jetbrains.rider
+      blender
 
       orca-slicer
 
