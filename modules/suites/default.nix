@@ -1,6 +1,5 @@
 { ... }: {
   imports = [
-    ./hardware
-    ./suites
+    ./robotics.nix
   ];
 }

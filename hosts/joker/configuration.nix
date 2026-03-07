@@ -13,6 +13,8 @@
     bluetooth.enable = true;
   };
 
+  suites.robotics.enable = true;
+
   system.stateVersion = "25.11";
 
 }

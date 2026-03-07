@@ -7,7 +7,7 @@
 }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../common.nix ];
+  imports = [ ./hardware-configuration.nix ../../configuration.nix ];
 
   networking.hostName = "futaba";
 

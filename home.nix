@@ -82,14 +82,6 @@ in
 
       okteta
 
-      # Robotics Apps
-      advantagescope
-      elastic-dashboard
-      pathplanner
-      wpilib.roborioteamnumbersetter
-      wpilib.sysid
-      wpilib.wpical
-
       # Desktop Packages
       nerd-fonts.fira-code
       brightnessctl
@@ -114,17 +106,13 @@ in
       nixfmt
       nixos-generators
       gh
-      direnv
 
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
       # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
       # # fonts?
       # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    ]
-    ++ (with stable; [
-      emscripten
-    ]);
+    ];
 
   programs.kitty = {
     enable = true;

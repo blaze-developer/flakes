@@ -21,7 +21,6 @@
   };
 
   nixpkgs.overlays = [
-    inputs.frc-nix.overlays.default
     inputs.nix-vscode-extensions.overlays.default
   ];
 
@@ -37,20 +36,14 @@
   networking = {
     networkmanager.enable = true;
     firewall = {
-      allowedTCPPorts = [ 56328 ];
-      allowedUDPPorts = [ ];
+      # allowedTCPPorts = [ ];
+      # allowedUDPPorts = [ ];
       enable = true;
     };
   };
 
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lia = {
