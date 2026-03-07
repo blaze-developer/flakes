@@ -63,7 +63,7 @@
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
 
-                users.lia = import ./hosts/joker/home.nix;
+                users.lia = import ./hosts/futaba/home.nix;
               };
             }
           ];
