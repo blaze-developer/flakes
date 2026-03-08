@@ -35,7 +35,7 @@
 
           modules = [
             ./hosts/joker/configuration.nix
-            ./modules
+            ./modules/nixos
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -55,7 +55,7 @@
 
           modules = [
             ./hosts/futaba/configuration.nix
-            ./modules
+            ./modules/nixos
             home-manager.nixosModules.home-manager
             {
               home-manager = {
