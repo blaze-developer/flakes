@@ -16,8 +16,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    desktop.terminal.enable = true;
-
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.variables = [ "--all" ];

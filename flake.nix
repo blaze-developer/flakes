@@ -1,3 +1,5 @@
+# Phasing this out in favor of modules
+
 {
   description = "Blazedev's NixOS Flake";
 

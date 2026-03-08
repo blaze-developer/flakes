@@ -1,4 +1,4 @@
-{ lib, config, inputs, ... }:
+{ lib, config, pkgs, ... }:
 let
   cfg = config.desktop.wallpaper;
 in
@@ -8,9 +8,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.swww = {
-      enable = true;
-      package = inputs.stable.swww;
-    };
+    services.swww.enable = true;
   };
 }

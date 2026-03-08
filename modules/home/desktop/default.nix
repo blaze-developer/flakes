@@ -20,6 +20,7 @@ in
       wm.enable = lib.mkDefault true;
       waybar.enable = lib.mkDefault true;
       theming.enable = lib.mkDefault true;
+      terminal.enable = true;
     };
   };
 }

@@ -1,3 +1,4 @@
+# Phasing this out in favor of modules
 {
   pkgs,
   inputs,
@@ -28,12 +29,6 @@ in
     NIXOS_OZONE_WL = 1;
     NODE_OPTIONS = "--max-old-space-size=16384";
   };
-
-  # Pywal File (i should probably modularize and i know, ill do it soon lol)
-  home.file.".config/wal/templates/colors-hyprland.conf".source = ./templates/colors-hyprland.conf;
-
-  # Let HM Manage Shell (to make the above bashrc work)
-  programs.bash.enable = true;
 
   programs.hyfetch = {
     enable = true;
@@ -112,12 +107,6 @@ in
     ];
 
   programs.wofi.enable = true;
-
-  programs.pywal.enable = true;
-
-  programs.bash.initExtra = ''
-    (cat ~/.cache/wal/sequences &)
-  '';
 
   programs.floorp = {
     enable = true;
@@ -201,5 +190,9 @@ in
       gpu-context = "wayland";
     };
   };
+
+
+  # Pretty Prompt
+  programs.starship.enable = true;
 
 }

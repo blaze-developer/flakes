@@ -5,7 +5,7 @@
 
   home.stateVersion = "25.11";
 
-  # Bluetooth stuff
+  # Bluetooth stuff' 
   wayland.windowManager.hyprland.settings.exec-once = [ "blueman-applet" ];
 
   desktop = {
