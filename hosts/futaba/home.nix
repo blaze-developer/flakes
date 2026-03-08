@@ -10,9 +10,7 @@
     iio-hyprland
   ];
 
-  wayland.windowManager.hyprland.settings = { 
-    monitor = "eDP-1, preferred, auto, 1.2";
-
+  wayland.windowManager.hyprland.settings = {
     exec-once = [ "iio-hyprland" ];
   };
 }
