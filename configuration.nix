@@ -86,7 +86,12 @@
     libxext
     libxfixes
     libxcb
+    libxrender
+    libxtst
+    libxi
   ];
+
+  fonts.fontconfig.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -99,7 +104,19 @@
     mesa
     ffmpeg
     steam
+    gsettings-desktop-schemas
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    kdePackages.dolphin
+    glib
+
+    wineWow64Packages.stable
+    winetricks
   ];
+
+  environment.variables = {
+    GSETTINGS_SCHEMA_DIR = "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
+  };
 
   programs.appimage = {
     enable = true;

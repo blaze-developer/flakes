@@ -10,6 +10,6 @@
 
   desktop = {
     enable = true;
-    wm.display = ", preferred, auto, 1.6";
+    wm.display = "eDP-1, 3840x2400@90, 0x0, 1.6";
   };
 }

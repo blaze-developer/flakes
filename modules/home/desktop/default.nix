@@ -4,11 +4,12 @@ let
 in 
 {
   imports = [
-    ./terminal.nix
     ./wm.nix
     ./waybar.nix
     ./wallpaper.nix
     ./theming.nix
+    
+    ./programs
   ];
 
   options.desktop = {
@@ -20,7 +21,11 @@ in
       wm.enable = lib.mkDefault true;
       waybar.enable = lib.mkDefault true;
       theming.enable = lib.mkDefault true;
-      terminal.enable = true;
+
+      programs = {
+        terminal.enable = lib.mkDefault true;
+        browser.enable = lib.mkDefault true;
+      };
     };
   };
 }

@@ -27,7 +27,8 @@ in
   home.sessionVariables = {
     EDITOR = "vim";
     NIXOS_OZONE_WL = 1;
-    NODE_OPTIONS = "--max-old-space-size=16384";
+    PROTON_ENABLE_WAYLAND = 1;
+    NODE_OPTIONS = "--max-old-space-size=25000";
   };
 
   programs.hyfetch = {
@@ -82,10 +83,7 @@ in
       grimblast
       wev
       hyprsunset
-      xdg-desktop-portal-hyprland
       pywalfox-native
-      gsettings-desktop-schemas
-      glib
 
       # Cli Apps
       nyancat
@@ -107,16 +105,6 @@ in
     ];
 
   programs.wofi.enable = true;
-
-  programs.floorp = {
-    enable = true;
-
-    profiles.default = {
-      extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-        ublock-origin
-      ];
-    };
-  };
 
   programs.vesktop = {
     enable = true;
