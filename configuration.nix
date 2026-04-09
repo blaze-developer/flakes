@@ -109,6 +109,7 @@
     xdg-desktop-portal-gtk
     kdePackages.dolphin
     glib
+    hello
 
     wineWow64Packages.stable
     winetricks

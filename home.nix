@@ -1,14 +1,8 @@
 # Phasing this out in favor of modules
 {
   pkgs,
-  inputs,
-  lib,
   ...
 }:
-
-let
-  stable = inputs.stable.legacyPackages."x86_64-linux";
-in
 {
   home = {
     username = "lia";
@@ -44,34 +38,16 @@ in
     [
 
       spotify
+      
       jdk
       python3
       nodejs_25
-
-      # (jetbrains.idea-oss.override {
-      #   vmopts = ''
-      #     -Dawt.toolkit.name=WLToolkit
-      #   '';
-      # })
 
       unityhub
       jetbrains.rider
       blender
 
       orca-slicer
-
-      # android-studio
-      android-tools
-
-      (pkgs.symlinkJoin {
-        name = "android-studio-wayland";
-        paths = [ pkgs.android-studio ];
-        buildInputs = [ pkgs.makeWrapper ];
-        postBuild = ''
-          wrapProgram $out/bin/android-studio \
-            --add-flags "-Dawt.toolkit.name=WLToolkit"
-        '';
-      })
 
       okteta
 
@@ -103,8 +79,6 @@ in
       # # fonts?
       # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     ];
-
-  programs.wofi.enable = true;
 
   programs.vesktop = {
     enable = true;

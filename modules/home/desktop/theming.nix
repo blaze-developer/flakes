@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 let 
   cfg = config.desktop.theming;
 in
@@ -12,13 +12,15 @@ in
 
     home.file.".config/wal/templates/colors-hyprland.conf".source = ./templates/colors-hyprland.conf;
 
+    home.packages = [
+      pkgs.awww
+    ];
+
     programs.bash.initExtra = ''
       (cat ~/.cache/wal/sequences &)
     '';
 
     programs.bash.enable = true; # Enable bash to have bashrc work
-
-    desktop.wallpaper.enable = lib.mkDefault true; # Enable the wallpaper
 
     wayland.windowManager.hyprland.settings = {
       source = "~/.cache/wal/colors-hyprland.conf";

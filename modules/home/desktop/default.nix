@@ -6,7 +6,6 @@ in
   imports = [
     ./wm.nix
     ./waybar.nix
-    ./wallpaper.nix
     ./theming.nix
     
     ./programs

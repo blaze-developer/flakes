@@ -145,5 +145,8 @@ in
         );
       };
     };
+
+    programs.wofi.enable = true;
+
   };
 }
