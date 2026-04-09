@@ -14,6 +14,7 @@
   };
 
   suites.robotics.enable = true;
+  suites.aagl.enable = true;
 
   system.stateVersion = "25.11";
 

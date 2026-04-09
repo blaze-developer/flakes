@@ -22,6 +22,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
