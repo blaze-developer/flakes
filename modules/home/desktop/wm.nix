@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 let
   cfg = config.desktop.wm;
 in 
@@ -79,6 +79,7 @@ in
         exec-once = [
           "waybar"
           "hyprsunset"
+          "awww-daemon"
         ];
 
         # Repeatable Bindings on Hold
@@ -147,6 +148,10 @@ in
     };
 
     programs.wofi.enable = true;
+
+    home.packages = with pkgs; [
+      awww
+    ];
 
   };
 }

@@ -12,10 +12,6 @@ in
 
     home.file.".config/wal/templates/colors-hyprland.conf".source = ./templates/colors-hyprland.conf;
 
-    home.packages = [
-      pkgs.awww
-    ];
-
     programs.bash.initExtra = ''
       (cat ~/.cache/wal/sequences &)
     '';
