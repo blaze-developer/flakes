@@ -13,7 +13,11 @@
     bluetooth.enable = true;
   };
 
-  suites.robotics.enable = true;
+  suites.robotics = {
+    enable = true;
+    systemcore = true;
+  };
+
   suites.aagl.enable = true;
 
   system.stateVersion = "25.11";
