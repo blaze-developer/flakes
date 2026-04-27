@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
     ./robotics.nix
-    ./aagl.nix
+    ./gaming.nix
   ];
 }

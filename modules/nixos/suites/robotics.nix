@@ -79,7 +79,7 @@ in
       wpilib.wpical
       direnv
 
-      advantagescope-patched
+      advantagescope
       elastic-dashboard
 
       # Android / FTC Tooling
@@ -102,6 +102,6 @@ in
     ];
 
     # AdvantageScope XR
-    networking.firewall.allowedTCPPorts = [ 56328 ];
+    networking.firewall.allowedTCPPorts = [ 56328 5810 1735 ];
   };
 }

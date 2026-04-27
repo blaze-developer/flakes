@@ -89,6 +89,9 @@
     libxrender
     libxtst
     libxi
+    libxcursor
+    
+    (pkgs.runCommand "steamrun-lib" {} "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
   ];
 
   fonts.fontconfig.enable = true;
@@ -109,7 +112,7 @@
     xdg-desktop-portal-gtk
     kdePackages.dolphin
     glib
-    hello
+    unzip
 
     wineWow64Packages.stable
     winetricks

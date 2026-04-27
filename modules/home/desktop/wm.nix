@@ -5,12 +5,11 @@ in
 {
   options.desktop.wm = {
     enable = lib.mkEnableOption "a window manager";
-
-    display = lib.mkOption {
-      type = lib.types.str;
-      default = ", preferred, auto, 1.0";
+    scaling = lib.mkOption {
+      type = lib.types.float;
+      default = 1.0;
       description = ''
-        The display configuration to apply to the window manager. Uses hyprland config setup.
+        The scaling factor for the window manager.
       '';
     };
   };
@@ -18,10 +17,16 @@ in
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      package = null;
+      portalPackage = null;
       systemd.variables = [ "--all" ];
       settings = {
+        monitor = ", preferred, auto, ${toString cfg.scaling}";
 
-        monitor = cfg.display;
+        env = [
+          "GDK_SCALE,${toString cfg.scaling}"
+          "AVALONIA_GLOBAL_SCALE_FACTOR,${toString cfg.scaling}"
+        ];
 
         general = {
           gaps_in = 5;

@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -18,7 +19,7 @@
     systemcore = true;
   };
 
-  suites.aagl.enable = true;
+  suites.gaming.enable = true;
 
   system.stateVersion = "25.11";
 
