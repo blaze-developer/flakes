@@ -70,6 +70,8 @@ in
     systemcore = lib.mkEnableOption "2027 Systemcore Alpha Testing";
   };
 
+  imports = [ inputs.frc-nix.nixosModules.firstdriverstation ];
+
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       pathplanner
@@ -101,7 +103,9 @@ in
       elastic-2027
     ];
 
+    programs.firstdriverstation.enable = true;
+
     # AdvantageScope XR
-    networking.firewall.allowedTCPPorts = [ 56328 5810 1735 ];
+    networking.firewall.allowedTCPPorts = [ 56328 5810 1735 6767 ];
   };
 }

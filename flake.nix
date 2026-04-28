@@ -8,7 +8,7 @@
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     frc-nix = {
-      url = "github:frc4451/frc-nix";
+      url = "github:nullcubee/frc-nix/2027-driver-station";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -66,15 +66,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1777152411,
-        "narHash": "sha256-r2elYkkQTSFp9hxDf4uLIznGPtxKg3r94FA3dbKpZyc=",
-        "owner": "frc4451",
+        "lastModified": 1777399852,
+        "narHash": "sha256-6zW4qdX8sa+UYixhStuhyhqyaLTR9zuxH2n4kcKiuuQ=",
+        "owner": "nullcubee",
         "repo": "frc-nix",
-        "rev": "95741031a43ea0c797eb8fc91b1ee73430ae0092",
+        "rev": "1ff6be50d70bfa8dd1fd1796cc6b2d229c5c72ba",
         "type": "github"
       },
       "original": {
-        "owner": "frc4451",
+        "owner": "nullcubee",
+        "ref": "2027-driver-station",
         "repo": "frc-nix",
         "type": "github"
       }

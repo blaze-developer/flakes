@@ -103,6 +103,13 @@ in
           ", XF86AudioPlay, exec, playerctl play-pause"
         ];
 
+        # Mouse bindings
+        bindm = [
+          "SUPER, mouse:272, movewindow"
+          "SUPER, mouse:273, resizewindow"
+          "SUPER SHIFT, mouse:272, resizewindow"
+        ];
+
         # Bindings only available when unlocked
         bind = [
           # Navigation
@@ -120,6 +127,10 @@ in
           "SUPER, right, movefocus, r"
           "SUPER, up, movefocus, u"
           "SUPER, down, movefocus, d"
+
+          # Scrolling
+          "SUPER, mouse_down, workspace, e+1"
+          "SUPER, mouse_up, workspace, e-1"
 
           # FKeys
           "SUPER SHIFT, S, exec, grimblast copy area"
