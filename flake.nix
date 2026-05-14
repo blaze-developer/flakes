@@ -25,6 +25,8 @@
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =

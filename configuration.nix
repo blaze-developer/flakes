@@ -22,7 +22,6 @@
 
   nixpkgs.overlays = [
     inputs.nix-vscode-extensions.overlays.default
-    inputs.frc-nix.overlays.default
   ];
 
   nixpkgs.config.allowUnfree = true;

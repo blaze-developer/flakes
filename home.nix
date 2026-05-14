@@ -35,10 +35,7 @@
 
   home.packages =
     with pkgs;
-    [
-
-      spotify
-      
+    [      
       jdk
       python3
       nodejs_25
@@ -50,16 +47,6 @@
       orca-slicer
 
       okteta
-
-      # Desktop Packages
-      nerd-fonts.fira-code
-      brightnessctl
-      playerctl
-      wl-clipboard
-      grimblast
-      wev
-      hyprsunset
-      pywalfox-native
 
       # Cli Apps
       nyancat
@@ -89,9 +76,8 @@
     };
   };
 
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
-    package = pkgs.vscodium;
 
     profiles.default = {
       userSettings = {
@@ -126,6 +112,9 @@
           vscjava.vscode-java-debug
           vscjava.vscode-java-test
           vscjava.vscode-java-dependency
+
+          # Cpp
+          ms-vscode.cpptools
         ];
     };
   };

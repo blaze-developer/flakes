@@ -5,11 +5,11 @@ let
   vscode-wpilib = pkgs.vscode-extensions.wpilibsuite.vscode-wpilib;
 
   vscode-wpilib-2027 = vscode-wpilib.overrideAttrs (oldAttrs: rec {
-    version = "2027.0.0-alpha-2";
+    version = "2027.0.0-alpha-5";
 
     src = pkgs.fetchurl {
       url = "https://github.com/wpilibsuite/vscode-wpilib/releases/download/v${version}/vscode-wpilib-${version}.vsix";
-      hash = "sha256-eeeGqs4+AHC55sN+pxMpNrHR7UmDy/oEN1BYnR9E8bs=";
+      hash = "sha256-K70E7d2ij4yq9WN2WXqAsKx7kLTEJobMRKzCs66rPiY=";
       # TODO: Once the version of nixpkgs in this flake is updated we should remove
       # the custom `name` and the `unzip` nativeBuildInput
       # See: https://github.com/NixOS/nixpkgs/commit/e24a734076ea21365bb618d63f5c9a70006dd196

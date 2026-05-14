@@ -70,15 +70,18 @@ in
     systemcore = lib.mkEnableOption "2027 Systemcore Alpha Testing";
   };
 
-  imports = [ inputs.frc-nix.nixosModules.firstdriverstation ];
-
   config = lib.mkIf cfg.enable {
+    nixpkgs.overlays = with inputs; [
+      frc-nix.overlays.default
+    ];
+
     environment.systemPackages = with pkgs; [
       pathplanner
       choreo
       wpilib.roborioteamnumbersetter
       wpilib.sysid
       wpilib.wpical
+      wpilib.firstdriverstation
       direnv
 
       advantagescope
@@ -86,6 +89,10 @@ in
 
       # Android / FTC Tooling
       android-tools
+
+      # Arduino
+      arduino-cli
+      arduino
 
       (pkgs.symlinkJoin {
           name = "android-studio-wayland";
@@ -102,8 +109,6 @@ in
       advantagescope-2027
       elastic-2027
     ];
-
-    programs.firstdriverstation.enable = true;
 
     # AdvantageScope XR
     networking.firewall.allowedTCPPorts = [ 56328 5810 1735 6767 ];

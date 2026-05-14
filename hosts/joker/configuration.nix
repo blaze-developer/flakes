@@ -19,6 +19,7 @@
   };
 
   suites.gaming.enable = true;
+  suites.music.enable = true;
 
   system.stateVersion = "25.11";
 

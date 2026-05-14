@@ -26,6 +26,7 @@ in
         env = [
           "GDK_SCALE,${toString cfg.scaling}"
           "AVALONIA_GLOBAL_SCALE_FACTOR,${toString cfg.scaling}"
+          "ELECTRON_OZONE_PLATFORM_HINT,auto"
         ];
 
         general = {
@@ -167,6 +168,14 @@ in
 
     home.packages = with pkgs; [
       awww
+      nerd-fonts.fira-code
+      brightnessctl
+      playerctl
+      wl-clipboard
+      grimblast
+      wev
+      hyprsunset
+      pywalfox-native
     ];
 
   };
