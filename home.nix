@@ -38,7 +38,7 @@
     [      
       jdk
       python3
-      nodejs_25
+      nodejs
 
       unityhub
       jetbrains.rider

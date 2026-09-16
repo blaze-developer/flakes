@@ -15,6 +15,6 @@
 
   suites.robotics = {
     enable = true;
-    systemcore = true;
+    systemcore = false;
   };
 }

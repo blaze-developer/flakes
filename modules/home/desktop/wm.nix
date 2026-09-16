@@ -20,11 +20,13 @@ in
       package = null;
       portalPackage = null;
       systemd.variables = [ "--all" ];
+      configType = "hyprlang";
       settings = {
         monitor = ", preferred, auto, ${toString cfg.scaling}";
 
         env = [
-          "GDK_SCALE,${toString cfg.scaling}"
+          # "GDK_SCALE,${toString cfg.scaling}"
+          # "GDK_DPI_SCALE,${toString cfg.scaling}"
           "AVALONIA_GLOBAL_SCALE_FACTOR,${toString cfg.scaling}"
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
         ];
@@ -36,6 +38,10 @@ in
           resize_on_border = true;
           allow_tearing = false;
           layout = "dwindle";
+        };
+
+        dwindle = {
+          preserve_split = true;
         };
 
         decoration = {
@@ -122,7 +128,7 @@ in
           # "SUPER, P, psuedo,"
           "SUPER, F, togglefloating"
           "SUPER SHIFT, F, fullscreen"
-          "SUPER, J, togglesplit,"
+          "SUPER, J, layoutmsg, togglesplit"
 
           "SUPER, left, movefocus, l"
           "SUPER, right, movefocus, r"

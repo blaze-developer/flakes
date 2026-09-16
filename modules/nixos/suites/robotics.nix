@@ -24,14 +24,14 @@ let
         keywords = [ "FRC" "Data" "Visualisation" ];
       };
 
-      version = "27.0.0-alpha-4";
+      version = "27.0.0-alpha-6";
     in
     pkgs.appimageTools.wrapType2 {
       pname = "advantagescope-2027";
-      version = "27.0.0-alpha-4";
+      inherit version;
       src = pkgs.fetchurl {
         url = "https://github.com/Mechanical-Advantage/AdvantageScope/releases/download/v${version}/advantagescope-linux-x64-v${version}.AppImage";
-        hash = "sha256-HLIL4uB2nt/oS+BrIsXxJjacnQKnEsEhG3QM9HAhrBg=";
+        hash = "sha256-2KZZIL/vsnvoVtAdWRzdhkdH4pTn+aLtlajvnsIhJW0=";
       };
       extraInstallCommands = ''
         install -Dm444 ${desktopItem}/share/applications/*.desktop \
@@ -81,7 +81,6 @@ in
       wpilib.roborioteamnumbersetter
       wpilib.sysid
       wpilib.wpical
-      wpilib.firstdriverstation
       direnv
 
       advantagescope
@@ -111,6 +110,6 @@ in
     ];
 
     # AdvantageScope XR
-    networking.firewall.allowedTCPPorts = [ 56328 5810 1735 6767 ];
+    networking.firewall.allowedTCPPorts = [ 56328 56329 5810 1735 6767 ];
   };
 }

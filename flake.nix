@@ -8,8 +8,7 @@
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     frc-nix = {
-      url = "github:nullcubee/frc-nix/2027-driver-station";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:frc4451/frc-nix/main";
     };
 
     home-manager = {
@@ -48,6 +47,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs; };
+                backupFileExtension = "backup";
 
                 users.lia = import ./hosts/joker/home.nix;
               };

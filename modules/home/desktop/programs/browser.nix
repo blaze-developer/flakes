@@ -16,7 +16,7 @@ in
           ublock-origin
           pywalfox
           dearrow
-          tabliss
+          # tabliss-new-tab
         ];
 
         extensions.force = true;
