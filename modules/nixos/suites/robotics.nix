@@ -4,42 +4,7 @@ let
 
   stable = inputs.stable.legacyPackages."x86_64-linux";
 
-  advantagescope-patched = pkgs.advantagescope.overrideAttrs (oldAttrs: {
-    src = pkgs.fetchFromGitHub {
-      owner = "blaze-developer";
-      repo = "AdvantageScope";
-      tag = "v2026.0.1-blazedev5";
-      sha256 = "sha256-jlQbeW7a2J2zRKio7c7OCA2/eaLh3lZm3JDZuJjpko4=";
-    };
-  });
-
-  advantagescope-2027 =
-    let
-      desktopItem = pkgs.makeDesktopItem {
-        desktopName = "AdvantageScope 2027 Alpha";
-        name = "advantagescope-2027";
-        exec = "advantagescope-2027";
-        icon = "advantagescope";
-        categories = [ "Robotics" "Development" ];
-        keywords = [ "FRC" "Data" "Visualisation" ];
-      };
-
-      version = "27.0.0-alpha-6";
-    in
-    pkgs.appimageTools.wrapType2 {
-      pname = "advantagescope-2027";
-      inherit version;
-      src = pkgs.fetchurl {
-        url = "https://github.com/Mechanical-Advantage/AdvantageScope/releases/download/v${version}/advantagescope-linux-x64-v${version}.AppImage";
-        hash = "sha256-2KZZIL/vsnvoVtAdWRzdhkdH4pTn+aLtlajvnsIhJW0=";
-      };
-      extraInstallCommands = ''
-        install -Dm444 ${desktopItem}/share/applications/*.desktop \
-          $out/share/applications/advantagescope-2027.desktop
-        install -Dm444 ${pkgs.advantagescope}/share/pixmaps/advantagescope.png \
-          $out/share/pixmaps/advantagescope.png
-      '';
-    };
+  advantagescope-2027 = inputs.frc-nix-2027.legacyPackages."x86_64-linux".advantagescope;
 
   elastic-2027 = pkgs.elastic-dashboard.overrideAttrs (oldAttrs: rec {
     version = "2027.0.0-alpha6";
@@ -84,7 +49,6 @@ in
       direnv
 
       advantagescope
-      elastic-dashboard
 
       # Android / FTC Tooling
       android-tools

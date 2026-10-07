@@ -64,16 +64,35 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1788905565,
-        "narHash": "sha256-ja08g/icdF/JR/FJfd5h4TKJ0oeL6MXfaI3YWD5IE9s=",
+        "lastModified": 1789476793,
+        "narHash": "sha256-UIkQX/1dtjLJd14F88bOB6HSonQmqezch09WVA8Px+4=",
         "owner": "frc4451",
         "repo": "frc-nix",
-        "rev": "56aac006b7d8d5d64946db035174ed73727c2920",
+        "rev": "11fb42f3052cad3154c7ce0350df66f35c28e11e",
         "type": "github"
       },
       "original": {
         "owner": "frc4451",
-        "ref": "main",
+        "repo": "frc-nix",
+        "type": "github"
+      }
+    },
+    "frc-nix-2027": {
+      "inputs": {
+        "nix-github-actions": "nix-github-actions_2",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1791399769,
+        "narHash": "sha256-UXhFPgWIbdNs/4B0o/DUJJxQ+YnhHIQUTFWVy6TQ8nk=",
+        "owner": "blaze-developer",
+        "repo": "frc-nix",
+        "rev": "643da08acf623f62593d3abce8852b3fa0396cf5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blaze-developer",
+        "ref": "2027",
         "repo": "frc-nix",
         "type": "github"
       }
@@ -119,9 +138,30 @@
         "type": "github"
       }
     },
+    "nix-github-actions_2": {
+      "inputs": {
+        "nixpkgs": [
+          "frc-nix-2027",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737420293,
+        "narHash": "sha256-F1G5ifvqTpJq7fdkT34e/Jy9VCyzd5XfJ9TO8fHhJWE=",
+        "owner": "nix-community",
+        "repo": "nix-github-actions",
+        "rev": "f4158fa080ef4503c8f4c820967d946c2af31ec9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-github-actions",
+        "type": "github"
+      }
+    },
     "nix-vscode-extensions": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1789360006,
@@ -171,6 +211,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1788752844,
+        "narHash": "sha256-VaWGJ6+cIYN2erfSecbRV+4ljI185Ty2wUrXyvQbgOw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "dc5d91f840324650bac8c379428c7037a416959a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1784564315,
         "narHash": "sha256-7OpsHHIZFUBLbeHNQ0oC40DZRQjsmGWodXge+OqgPgk=",
         "owner": "nixos",
@@ -185,7 +241,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1789286504,
         "narHash": "sha256-eiEK7cKZORNEvX0GeF3RtNEF/JXhgf2RqSp3230q13E=",
@@ -201,7 +257,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1789149629,
         "narHash": "sha256-eQUZVehWLDBbpBR2rq6DnuRee1ULT6Y675RhsYDSjYI=",
@@ -219,9 +275,10 @@
         "aagl": "aagl",
         "firefox-addons": "firefox-addons",
         "frc-nix": "frc-nix",
+        "frc-nix-2027": "frc-nix-2027",
         "home-manager": "home-manager",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "spicetify-nix": "spicetify-nix",
         "stable": "stable"
       }
@@ -249,7 +306,7 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "systems": "systems"
       },
       "locked": {

@@ -82,7 +82,7 @@
     profiles.default = {
       userSettings = {
         "extensions.autoCheckUpdates" = false;
-        "extensions.autoUpdate" = false;
+        "extensions.autoUpdate" = "off";
         "editor.minimap.enabled" = true;
 
         "workbench.colorTheme" = "Wal";
