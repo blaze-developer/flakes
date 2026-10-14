@@ -99,7 +99,7 @@
         };
       };
       extensions =
-        with pkgs.vscode-extensions;
+        with pkgs.nix-vscode-extensions.vscode-marketplace;
         [
           jnoortheen.nix-ide
           # dlasagno.wal-theme
@@ -112,6 +112,7 @@
           vscjava.vscode-java-debug
           vscjava.vscode-java-test
           vscjava.vscode-java-dependency
+          richardwillis.vscode-spotless-gradle
 
           # Cpp
           ms-vscode.cpptools

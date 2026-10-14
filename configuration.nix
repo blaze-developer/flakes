@@ -117,6 +117,8 @@
 
     wineWow64Packages.stable
     winetricks
+
+    quartus-prime-lite
   ];
 
   environment.variables = {
