@@ -1,4 +1,2 @@
 # BlazeDev's NixOS Flake
-This is the repository for my NixOS flake! :3 I think if i keep configuring this right,
-it will be possible to pull it down, add a hardware configuration, and recreate the whole
-system.
+This is the repository for my NixOS flake. This is a system configuration that I can deterministically reproduce including my packages, configuration files, and more, allowing for a consistent setup across devices with a single command.
