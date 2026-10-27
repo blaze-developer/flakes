@@ -52,11 +52,15 @@
       "wheel"
       "networkmanager"
       "input"
+      "disk"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
   };
+
+  security.polkit.enable = true;
+  security.polkit.enablePkexecWrapper = true;
 
   # PROGRAMS
 
@@ -117,8 +121,6 @@
 
     wineWow64Packages.stable
     winetricks
-
-    quartus-prime-lite
   ];
 
   environment.variables = {
@@ -166,5 +168,27 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Import all classwork-related udev rules
+  # services.udev.packages = [
+  #   (pkgs.runCommand "class-udev-rules" { } ''
+  #     mkdir -p $out/lib/udev/rules.d
+  #     cp ${./udevRules}/* $out/lib/udev/rules.d/
+  #   '')
+  # ];
+
+  services.udev.extraRules = ''
+    # USB-Blaster
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6001", MODE="0666", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6002", MODE="0666", TAG+="uaccess"
+
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6003", MODE="0666", TAG+="uaccess"
+
+    # USB-Blaster II
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6010", MODE="0666", TAG+="uaccess"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="09fb", ATTRS{idProduct}=="6810", MODE="0666", TAG+="uaccess"
+  '';
+
+  programs.direnv.enable = true;
 
 }

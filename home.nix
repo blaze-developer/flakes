@@ -18,6 +18,12 @@
     hypr = "start-hyprland";
   };
 
+  programs.bash.bashrcExtra = ''
+    prefetch-unpacked() {
+      nix hash convert --from nix32 --to sri --hash-algo sha256 $(nix-prefetch-url --unpack $1)
+    }
+  '';
+
   home.sessionVariables = {
     EDITOR = "vim";
     NIXOS_OZONE_WL = 1;

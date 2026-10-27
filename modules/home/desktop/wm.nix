@@ -25,9 +25,7 @@ in
         monitor = ", preferred, auto, ${toString cfg.scaling}";
 
         env = [
-          # "GDK_SCALE,${toString cfg.scaling}"
-          # "GDK_DPI_SCALE,${toString cfg.scaling}"
-          "AVALONIA_GLOBAL_SCALE_FACTOR,${toString cfg.scaling}"
+          "QT_SCALE_FACTOR,${toString cfg.scaling}"
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
         ];
 
@@ -121,7 +119,7 @@ in
         bind = [
           # Navigation
           "SUPER, RETURN, exec, alacritty"
-          "SUPER, SPACE, exec, killall &  wofi --show drun"
+          "SUPER, SPACE, exec, killall &  wofi --show drun -GI"
           "SUPER, C, killactive,"
           "SUPER, M, exit,"
           "SUPER, B, exec, floorp"
@@ -141,7 +139,7 @@ in
 
           # FKeys
           "SUPER SHIFT, S, exec, grimblast copy area"
-          ", Print, exec, grimblast copy active"
+          ", Print, exec, grimblast copy screen"
 
           # Blue light filter
           "SUPER, N, exec, hyprctl hyprsunset temperature 1500" # night
@@ -183,6 +181,8 @@ in
       hyprsunset
       pywalfox-native
     ];
+
+    services.hyprpolkitagent.enable = true;
 
   };
 }

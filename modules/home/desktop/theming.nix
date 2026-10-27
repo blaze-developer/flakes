@@ -8,7 +8,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.pywal.enable = true;
+    programs.pywal = {
+      enable = true;
+      package = pkgs.pywal16.overrideAttrs (old: {
+        makeWrapperArgs = [
+          "--prefix" "PATH" ":" "${lib.makeBinPath [ pkgs.imagemagick ]}"
+        ];
+      });
+    };
 
     home.file.".config/wal/templates/colors-hyprland.conf".source = ./templates/colors-hyprland.conf;
 

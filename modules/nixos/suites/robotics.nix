@@ -4,28 +4,9 @@ let
 
   stable = inputs.stable.legacyPackages."x86_64-linux";
 
-  advantagescope-2027 = inputs.frc-nix-2027.legacyPackages."x86_64-linux".advantagescope;
-
-  elastic-2027 = pkgs.elastic-dashboard.overrideAttrs (oldAttrs: rec {
-    version = "2027.0.0-alpha6";
-
-    src = pkgs.fetchurl {
-      url = "https://github.com/Gold872/elastic_dashboard/releases/download/v${version}/Elastic-Linux.zip";
-      hash = "sha256-YQO3D+F4jO5JKZFvj4uZh+/jz0aarxIvR87PuD9iZ8E=";
-    };
-
-    desktopItems = [
-      (pkgs.makeDesktopItem {
-        desktopName = "Elastic 2027 Alpha";
-        name = "elastic-dashboard-2027";
-        exec = "elastic_dashboard";
-        icon = "elastic-dashboard";
-        comment = "A simple and modern dashboard for FRC";
-        categories = [ "Development" ];
-        keywords = [ "FRC" "Dashboard" ];
-      })
-    ];
-  });
+  frc-nix-2027 = inputs.frc-nix-2027.legacyPackages."x86_64-linux";
+  limelight-hardware-manager = (pkgs.extend inputs.frc-nix-ll.overlays.default).limelight-hardware-manager;
+  firstdriverstation = (pkgs.extend inputs.frc-nix-ds.overlays.default).wpilib.firstdriverstation;
 in 
 {
   options.suites.robotics = {
@@ -68,12 +49,19 @@ in
         })
     ] ++ (with stable; [
       emscripten
-    ]) ++ lib.optionals cfg.systemcore [
-      advantagescope-2027
-      elastic-2027
+    ]) ++ lib.optionals cfg.systemcore (with frc-nix-2027; [
+      advantagescope
+      limelight-hardware-manager
+      firstdriverstation
+    ]);
+
+    # For proper hidraw support with DS
+    services.udev.packages = lib.optionals cfg.systemcore [
+      firstdriverstation
+      limelight-hardware-manager
     ];
 
-    # AdvantageScope XR
+    # AdvantageScope XR (CHECK WHICH ONES OF THESE ARE NEEDED AND MAYBE CONTRIBUTE TO FRC-NIX WITH PORT INSTRUCTIONS TO GET THIS RIGHT)
     networking.firewall.allowedTCPPorts = [ 56328 56329 5810 1735 6767 ];
   };
 }
