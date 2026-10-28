@@ -6,7 +6,6 @@ let
 
   frc-nix-2027 = inputs.frc-nix-2027.legacyPackages."x86_64-linux";
   limelight-hardware-manager = (pkgs.extend inputs.frc-nix-ll.overlays.default).limelight-hardware-manager;
-  firstdriverstation = (pkgs.extend inputs.frc-nix-ds.overlays.default).wpilib.firstdriverstation;
 in 
 {
   options.suites.robotics = {
@@ -49,19 +48,40 @@ in
         })
     ] ++ (with stable; [
       emscripten
-    ]) ++ lib.optionals cfg.systemcore (with frc-nix-2027; [
-      advantagescope
+    ]) ++ lib.optionals cfg.systemcore [
+      frc-nix-2027.advantagescope
       limelight-hardware-manager
-      firstdriverstation
-    ]);
+
+      pkgs.wpilib.firstdriverstation
+    ];
 
     # For proper hidraw support with DS
     services.udev.packages = lib.optionals cfg.systemcore [
-      firstdriverstation
+      pkgs.wpilib.firstdriverstation
       limelight-hardware-manager
+
+      (pkgs.writeTextDir "lib/udev/rules.d/70-limelight-flash.rules" ''
+        SUBSYSTEM=="block", ATTRS{idVendor}=="0a5c", ATTRS{idProduct}=="0104", TAG+="uaccess"
+      '')
     ];
 
+    # FIRST DS Watching Workaround
+    environment.variables = {
+      DOTNET_hostBuilder__reloadConfigOnChange = "false";
+    };
+
     # AdvantageScope XR (CHECK WHICH ONES OF THESE ARE NEEDED AND MAYBE CONTRIBUTE TO FRC-NIX WITH PORT INSTRUCTIONS TO GET THIS RIGHT)
-    networking.firewall.allowedTCPPorts = [ 56328 56329 5810 1735 6767 ];
+    networking.firewall.allowedTCPPorts = [ 56328 56329 ];
+
+    # Additional: 5810 1735 6767
+
+    # LL Hardware manager discovery
+    networking.firewall.allowedUDPPorts = [ 5808 5809 ];
+    networking.firewall.extraCommands = ''
+      iptables -A nixos-fw -p udp --sport 5808 -j nixos-fw-accept
+    '';
+
+    systemd.tmpfiles.rules = [ "L+ /usr/bin/pkexec - - - - /run/wrappers/bin/pkexec" ];
+
   };
 }

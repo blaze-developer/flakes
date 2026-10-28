@@ -64,11 +64,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1789476793,
-        "narHash": "sha256-UIkQX/1dtjLJd14F88bOB6HSonQmqezch09WVA8Px+4=",
+        "lastModified": 1793123297,
+        "narHash": "sha256-edqFsur8gyCb0lYhEweP/I3heVkvNPaDT3kMii2Kb2Q=",
         "owner": "frc4451",
         "repo": "frc-nix",
-        "rev": "11fb42f3052cad3154c7ce0350df66f35c28e11e",
+        "rev": "18c3b8ba7d259adc78227c0dca2dfecc1a480b38",
         "type": "github"
       },
       "original": {
@@ -97,37 +97,17 @@
         "type": "github"
       }
     },
-    "frc-nix-ds": {
+    "frc-nix-ll": {
       "inputs": {
         "nix-github-actions": "nix-github-actions_3",
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1792673143,
-        "narHash": "sha256-gWMNA95gFEmUGk5kzkgpwOrJ9I3zyVZcKSDQKTSphMQ=",
-        "owner": "nullcubee",
-        "repo": "frc-nix",
-        "rev": "8414e9a4646f27a759fed77eb28aad1086742f22",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nullcubee",
-        "ref": "2027-driver-station",
-        "repo": "frc-nix",
-        "type": "github"
-      }
-    },
-    "frc-nix-ll": {
-      "inputs": {
-        "nix-github-actions": "nix-github-actions_4",
-        "nixpkgs": "nixpkgs_5"
-      },
-      "locked": {
-        "lastModified": 1792722860,
-        "narHash": "sha256-1E2uIOJHbvrexMBydQ5hYOAfKpEs0JyH9FIkaSzp4Pc=",
+        "lastModified": 1793127577,
+        "narHash": "sha256-r09xgdy6TpT3chUNjD2/VqhIiPIN76F/E6h6INPV6no=",
         "owner": "blaze-developer",
         "repo": "frc-nix",
-        "rev": "771318ce13a665f413c6e10ec4a4166202845233",
+        "rev": "502b39b17383eaf08523d823ee906ea878fba889",
         "type": "github"
       },
       "original": {
@@ -202,27 +182,6 @@
     "nix-github-actions_3": {
       "inputs": {
         "nixpkgs": [
-          "frc-nix-ds",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1737420293,
-        "narHash": "sha256-F1G5ifvqTpJq7fdkT34e/Jy9VCyzd5XfJ9TO8fHhJWE=",
-        "owner": "nix-community",
-        "repo": "nix-github-actions",
-        "rev": "f4158fa080ef4503c8f4c820967d946c2af31ec9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-github-actions",
-        "type": "github"
-      }
-    },
-    "nix-github-actions_4": {
-      "inputs": {
-        "nixpkgs": [
           "frc-nix-ll",
           "nixpkgs"
         ]
@@ -243,7 +202,7 @@
     },
     "nix-vscode-extensions": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1792555615,
@@ -325,22 +284,6 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1788752844,
-        "narHash": "sha256-VaWGJ6+cIYN2erfSecbRV+4ljI185Ty2wUrXyvQbgOw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "dc5d91f840324650bac8c379428c7037a416959a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_6": {
-      "locked": {
         "lastModified": 1784564315,
         "narHash": "sha256-7OpsHHIZFUBLbeHNQ0oC40DZRQjsmGWodXge+OqgPgk=",
         "owner": "nixos",
@@ -355,7 +298,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1792502884,
         "narHash": "sha256-IoNisKcGbUjdd45qCqywGMCYmZ5EnkxezvLII0FWwNA=",
@@ -371,7 +314,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_8": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1792094642,
         "narHash": "sha256-LPFRbrCWWyNsdQLO3SX1B/5UMkFK0hfe7bZR6lENvpc=",
@@ -390,11 +333,10 @@
         "firefox-addons": "firefox-addons",
         "frc-nix": "frc-nix",
         "frc-nix-2027": "frc-nix-2027",
-        "frc-nix-ds": "frc-nix-ds",
         "frc-nix-ll": "frc-nix-ll",
         "home-manager": "home-manager",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_6",
         "spicetify-nix": "spicetify-nix",
         "stable": "stable"
       }
@@ -422,7 +364,7 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_8",
+        "nixpkgs": "nixpkgs_7",
         "systems": "systems"
       },
       "locked": {

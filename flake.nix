@@ -15,10 +15,6 @@
       url = "github:blaze-developer/frc-nix/ll-hw-manager";
     };
 
-    frc-nix-ds = {
-      url = "github:nullcubee/frc-nix/2027-driver-station";
-    };
-
     frc-nix = {
       url = "github:frc4451/frc-nix";
     };
