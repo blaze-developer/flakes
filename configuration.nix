@@ -52,7 +52,6 @@
       "wheel"
       "networkmanager"
       "input"
-      "disk"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
