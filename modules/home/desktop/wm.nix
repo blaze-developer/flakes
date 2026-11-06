@@ -22,7 +22,7 @@ in
       systemd.variables = [ "--all" ];
       configType = "hyprlang";
       settings = {
-        monitor = ", preferred, auto, ${toString cfg.scaling}";
+        monitor = "eDP-1, preferred, auto, ${toString cfg.scaling}";
 
         env = [
           "QT_SCALE_FACTOR,${toString cfg.scaling}"
