@@ -3,16 +3,11 @@ let
   cfg = config.suites.robotics;
 
   stable = inputs.stable.legacyPackages."x86_64-linux";
-
-  frc-nix-2027 = inputs.frc-nix-2027.legacyPackages."x86_64-linux";
-  limelight-hardware-manager = (pkgs.extend inputs.frc-nix-ll.overlays.default).limelight-hardware-manager;
 in 
 {
   options.suites.robotics = {
     enable = lib.mkEnableOption "Wpilib and Robotics Software Suite";
     ftc = lib.mkEnableOption "FTC / Android Tooling";
-
-    systemcore = lib.mkEnableOption "2027 Systemcore Alpha Testing";
   };
 
   config = lib.mkIf cfg.enable {
@@ -21,15 +16,20 @@ in
     ];
 
     environment.systemPackages = with pkgs; [
+
       pathplanner
       choreo
       wpilib.roborioteamnumbersetter
       wpilib.sysid
       wpilib.wpical
-      direnv
+      wpilib.firstdriverstation
 
       advantagescope
+      limelight-hardware-manager
 
+    ] ++ (with stable; [
+      emscripten
+    ]) ++ lib.optionals cfg.ftc [
       # Android / FTC Tooling
       android-tools
 
@@ -46,23 +46,12 @@ in
               --add-flags "-Dawt.toolkit.name=WLToolkit"
           '';
         })
-    ] ++ (with stable; [
-      emscripten
-    ]) ++ lib.optionals cfg.systemcore [
-      frc-nix-2027.advantagescope
-      limelight-hardware-manager
-
-      pkgs.wpilib.firstdriverstation
     ];
 
     # For proper hidraw support with DS
-    services.udev.packages = lib.optionals cfg.systemcore [
-      pkgs.wpilib.firstdriverstation
+    services.udev.packages = with pkgs; [
+      wpilib.firstdriverstation
       limelight-hardware-manager
-
-      (pkgs.writeTextDir "lib/udev/rules.d/70-limelight-flash.rules" ''
-        SUBSYSTEM=="block", ATTRS{idVendor}=="0a5c", ATTRS{idProduct}=="0104", TAG+="uaccess"
-      '')
     ];
 
     # FIRST DS Watching Workaround

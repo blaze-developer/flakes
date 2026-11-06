@@ -7,16 +7,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
-    frc-nix-2027 = {
-      url = "github:blaze-developer/frc-nix/2027";
-    };
-
-    frc-nix-ll = {
-      url = "github:blaze-developer/frc-nix/ll-hw-manager";
-    };
-
     frc-nix = {
-      url = "github:frc4451/frc-nix";
+      url = "github:blaze-developer/frc-nix/myalpha/2027";
     };
 
     home-manager = {
