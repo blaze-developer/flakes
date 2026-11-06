@@ -1,13 +1,15 @@
-{ lib, config, ... }:
-let
-  cfg = config.desktop;
-in 
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.desktop;
+in {
   imports = [
     ./wm.nix
     ./waybar.nix
     ./theming.nix
-    
+
     ./programs
   ];
 

@@ -1,8 +1,11 @@
-{ lib, config, pkgs, ... }:
-let 
-  cfg = config.desktop.theming;
-in
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  cfg = config.desktop.theming;
+in {
   options.desktop.theming = {
     enable = lib.mkEnableOption "theming through pywal";
   };
@@ -12,7 +15,10 @@ in
       enable = true;
       package = pkgs.pywal16.overrideAttrs (old: {
         makeWrapperArgs = [
-          "--prefix" "PATH" ":" "${lib.makeBinPath [ pkgs.imagemagick ]}"
+          "--prefix"
+          "PATH"
+          ":"
+          "${lib.makeBinPath [pkgs.imagemagick]}"
         ];
       });
     };

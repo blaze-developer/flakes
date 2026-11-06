@@ -1,14 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 {
   pkgs,
   inputs,
   ...
-}:
-
-{
+}: {
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -96,7 +93,7 @@
     libICE
     libSM
     SDL2
-    
+
     (pkgs.runCommand "steamrun-lib" {} "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
   ];
 
@@ -191,5 +188,4 @@
   '';
 
   programs.direnv.enable = true;
-
 }

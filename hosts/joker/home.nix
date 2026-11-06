@@ -1,12 +1,10 @@
-{
-  ...
-}: {
-  imports = [ ../../modules/home ];
+{...}: {
+  imports = [../../modules/home];
 
   home.stateVersion = "25.11";
 
-  # Bluetooth stuff' 
-  wayland.windowManager.hyprland.settings.exec-once = [ "blueman-applet" ];
+  # Bluetooth stuff'
+  wayland.windowManager.hyprland.settings.exec-once = ["blueman-applet"];
 
   desktop = {
     enable = true;

@@ -1,9 +1,5 @@
 # Phasing this out in favor of modules
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   home = {
     username = "lia";
     homeDirectory = "/home/lia";
@@ -39,39 +35,37 @@
     enable = true;
   };
 
-  home.packages =
-    with pkgs;
-    [      
-      jdk
-      python3
-      nodejs
+  home.packages = with pkgs; [
+    jdk
+    python3
+    nodejs
 
-      unityhub
-      jetbrains.rider
-      blender
+    unityhub
+    jetbrains.rider
+    blender
 
-      orca-slicer
+    orca-slicer
 
-      okteta
+    okteta
 
-      # Cli Apps
-      nyancat
-      unimatrix
-      cava
-      ani-cli
-      blahaj
-      yt-dlp
-      nixd
-      nixfmt
-      nixos-generators
-      gh
+    # Cli Apps
+    nyancat
+    unimatrix
+    cava
+    ani-cli
+    blahaj
+    yt-dlp
+    nixd
+    nixfmt
+    nixos-generators
+    gh
 
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    ];
+    # # It is sometimes useful to fine-tune packages, for example, by applying
+    # # overrides. You can do that directly here, just don't forget the
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # # fonts?
+    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+  ];
 
   programs.vesktop = {
     enable = true;
@@ -104,25 +98,23 @@
           "*.json" = "jsonc";
         };
       };
-      extensions =
-        with pkgs.nix-vscode-extensions.vscode-marketplace;
-        [
-          jnoortheen.nix-ide
-          # dlasagno.wal-theme
-          mkhl.direnv
+      extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
+        jnoortheen.nix-ide
+        # dlasagno.wal-theme
+        mkhl.direnv
 
-          # Java
-          redhat.java
-          vscjava.vscode-maven
-          vscjava.vscode-gradle
-          vscjava.vscode-java-debug
-          vscjava.vscode-java-test
-          vscjava.vscode-java-dependency
-          richardwillis.vscode-spotless-gradle
+        # Java
+        redhat.java
+        vscjava.vscode-maven
+        vscjava.vscode-gradle
+        vscjava.vscode-java-debug
+        vscjava.vscode-java-test
+        vscjava.vscode-java-dependency
+        richardwillis.vscode-spotless-gradle
 
-          # Cpp
-          ms-vscode.cpptools
-        ];
+        # Cpp
+        ms-vscode.cpptools
+      ];
     };
   };
 
@@ -147,8 +139,6 @@
     };
   };
 
-
   # Pretty Prompt
   programs.starship.enable = true;
-
 }

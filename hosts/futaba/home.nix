@@ -1,8 +1,5 @@
-{
-  pkgs,
-  ...
-}: {
-  imports = [ ../../home.nix ];
+{pkgs, ...}: {
+  imports = [../../home.nix];
 
   home.stateVersion = "25.05";
 
@@ -11,6 +8,6 @@
   ];
 
   wayland.windowManager.hyprland.settings = {
-    exec-once = [ "iio-hyprland" ];
+    exec-once = ["iio-hyprland"];
   };
 }

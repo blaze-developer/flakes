@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.desktop.programs.terminal;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.desktop.programs.terminal;
+in {
   options.desktop.programs.terminal = {
     enable = lib.mkEnableOption "a terminal emulator";
   };

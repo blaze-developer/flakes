@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.drivers.bluetooth;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.drivers.bluetooth;
+in {
   options.drivers.bluetooth = {
     enable = lib.mkEnableOption "bluetooth service";
   };

@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let 
-  cfg = config.drivers.nvidia;
-in 
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.drivers.nvidia;
+in {
   options.drivers.nvidia = {
     enable = lib.mkEnableOption "nvidia drivers";
     # hybrid = {
@@ -10,12 +12,10 @@ in
     # };
   };
 
-  
   config = lib.mkIf cfg.enable {
-    services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
+    services.xserver.videoDrivers = ["modesetting" "nvidia"];
 
     hardware.nvidia = {
-
       # Modesetting is required.
       modesetting.enable = true;
 

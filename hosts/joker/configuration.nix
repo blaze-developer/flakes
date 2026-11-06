@@ -1,8 +1,5 @@
-{
-  ...
-}:
-{
-  imports = [ ./hardware-configuration.nix ../../configuration.nix ];
+{...}: {
+  imports = [./hardware-configuration.nix ../../configuration.nix];
 
   networking.hostName = "joker";
 
@@ -22,5 +19,4 @@
   suites.music.enable = true;
 
   system.stateVersion = "25.11";
-
 }

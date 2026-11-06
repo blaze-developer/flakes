@@ -1,8 +1,11 @@
-{ lib, config, inputs, ... }:
-let
-  cfg = config.desktop.programs.browser;
-in
 {
+  lib,
+  config,
+  inputs,
+  ...
+}: let
+  cfg = config.desktop.programs.browser;
+in {
   options.desktop.programs.browser = {
     enable = lib.mkEnableOption "web browser";
   };

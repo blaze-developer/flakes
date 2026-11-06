@@ -6,9 +6,7 @@
   lib,
   modulesPath,
   ...
-}:
-
-{
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -20,9 +18,9 @@
     "sd_mod"
     "sdhci_pci"
   ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = ["kvm-amd"];
+  boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5c820853-8bf0-4fc6-8d39-10a0bba40ef2";
@@ -39,7 +37,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/d0605afb-217f-48ca-b6c8-69423993b5b0"; }
+    {device = "/dev/disk/by-uuid/d0605afb-217f-48ca-b6c8-69423993b5b0";}
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

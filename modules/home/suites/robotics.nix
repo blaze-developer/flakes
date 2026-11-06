@@ -1,5 +1,9 @@
-{ lib, config, pkgs, ... }: 
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   cfg = config.suites.robotics;
 
   vscode-wpilib = pkgs.vscode-extensions.wpilibsuite.vscode-wpilib;
@@ -20,8 +24,7 @@ let
       name = "${oldAttrs.name}.zip";
     };
   });
-in 
-{
+in {
   options.suites.robotics = {
     enable = lib.mkEnableOption "Robotics home manager configurations.";
     systemcore = lib.mkEnableOption "systemcore alpha versions";
@@ -29,7 +32,11 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.vscodium.profiles.default.extensions = [
-      (if cfg.systemcore then vscode-wpilib-2027 else vscode-wpilib)
+      (
+        if cfg.systemcore
+        then vscode-wpilib-2027
+        else vscode-wpilib
+      )
     ];
   };
 }

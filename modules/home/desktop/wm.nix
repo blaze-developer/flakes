@@ -1,8 +1,11 @@
-{ lib, config, pkgs, ... }:
-let
-  cfg = config.desktop.wm;
-in 
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  cfg = config.desktop.wm;
+in {
   options.desktop.wm = {
     enable = lib.mkEnableOption "a window manager";
     scaling = lib.mkOption {
@@ -19,7 +22,7 @@ in
       enable = true;
       package = null;
       portalPackage = null;
-      systemd.variables = [ "--all" ];
+      systemd.variables = ["--all"];
       configType = "hyprlang";
       settings = {
         monitor = "eDP-1, preferred, auto, ${toString cfg.scaling}";
@@ -116,55 +119,55 @@ in
         ];
 
         # Bindings only available when unlocked
-        bind = [
-          # Navigation
-          "SUPER, RETURN, exec, alacritty"
-          "SUPER, SPACE, exec, killall &  wofi --show drun -GI"
-          "SUPER, C, killactive,"
-          "SUPER, M, exit,"
-          "SUPER, B, exec, floorp"
-          # "SUPER, P, psuedo,"
-          "SUPER, F, togglefloating"
-          "SUPER SHIFT, F, fullscreen"
-          "SUPER, J, layoutmsg, togglesplit"
+        bind =
+          [
+            # Navigation
+            "SUPER, RETURN, exec, alacritty"
+            "SUPER, SPACE, exec, killall &  wofi --show drun -GI"
+            "SUPER, C, killactive,"
+            "SUPER, M, exit,"
+            "SUPER, B, exec, floorp"
+            # "SUPER, P, psuedo,"
+            "SUPER, F, togglefloating"
+            "SUPER SHIFT, F, fullscreen"
+            "SUPER, J, layoutmsg, togglesplit"
 
-          "SUPER, left, movefocus, l"
-          "SUPER, right, movefocus, r"
-          "SUPER, up, movefocus, u"
-          "SUPER, down, movefocus, d"
+            "SUPER, left, movefocus, l"
+            "SUPER, right, movefocus, r"
+            "SUPER, up, movefocus, u"
+            "SUPER, down, movefocus, d"
 
-          # Scrolling
-          "SUPER, mouse_down, workspace, e+1"
-          "SUPER, mouse_up, workspace, e-1"
+            # Scrolling
+            "SUPER, mouse_down, workspace, e+1"
+            "SUPER, mouse_up, workspace, e-1"
 
-          # FKeys
-          "SUPER SHIFT, S, exec, grimblast copy area"
-          ", Print, exec, grimblast copy screen"
+            # FKeys
+            "SUPER SHIFT, S, exec, grimblast copy area"
+            ", Print, exec, grimblast copy screen"
 
-          # Blue light filter
-          "SUPER, N, exec, hyprctl hyprsunset temperature 1500" # night
-          "SUPER, D, exec, hyprctl hyprsunset identity" # day
+            # Blue light filter
+            "SUPER, N, exec, hyprctl hyprsunset temperature 1500" # night
+            "SUPER, D, exec, hyprctl hyprsunset identity" # day
 
-          # Passthroughs
-          "CONTROL SHIFT, M, pass, class:vesktop"
-          "CONTROL SHIFT, D, pass, class:vesktop"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-          builtins.concatLists (
-            builtins.genList (
-              i:
-              let
-                ws = i + 1;
-              in
-              [
-                "SUPER, code:1${toString i}, workspace, ${toString ws}"
-                "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-              ]
-            ) 9
-          )
-        );
+            # Passthroughs
+            "CONTROL SHIFT, M, pass, class:vesktop"
+            "CONTROL SHIFT, D, pass, class:vesktop"
+          ]
+          ++ (
+            # workspaces
+            # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+            builtins.concatLists (
+              builtins.genList (
+                i: let
+                  ws = i + 1;
+                in [
+                  "SUPER, code:1${toString i}, workspace, ${toString ws}"
+                  "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+                ]
+              )
+              9
+            )
+          );
       };
     };
 
@@ -183,6 +186,5 @@ in
     ];
 
     services.hyprpolkitagent.enable = true;
-
   };
 }

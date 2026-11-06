@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     ./desktop
     ./suites

@@ -1,9 +1,13 @@
-{ lib, config, inputs, pkgs, ... }:
-let
-  cfg = config.suites.gaming;
-in 
 {
-  imports = [ inputs.aagl.nixosModules.default ];
+  lib,
+  config,
+  inputs,
+  pkgs,
+  ...
+}: let
+  cfg = config.suites.gaming;
+in {
+  imports = [inputs.aagl.nixosModules.default];
 
   options.suites.gaming.enable = lib.mkEnableOption "Games";
 

@@ -1,8 +1,10 @@
-{ lib, config, ... }:
-let
-  cfg = config.desktop.waybar;
-in 
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.desktop.waybar;
+in {
   options.desktop.waybar.enable = lib.mkEnableOption "waybar";
 
   config = lib.mkIf cfg.enable {
